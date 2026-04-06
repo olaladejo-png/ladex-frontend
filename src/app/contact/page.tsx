@@ -46,7 +46,7 @@ export default async function ContactPage() {
           padding: 6.5rem 0 5.5rem; position: relative; overflow: hidden;
         }
         .contact-hero-content { position: relative; z-index: 10; }
-        .contact-hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 1.25rem; max-width: 700px; line-height: 1; text-transform: uppercase; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+        .contact-hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 1.25rem; max-width: 700px; line-height: 1; text-transform: uppercase; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
         .contact-hero p { color: rgba(255,255,255,.7); max-width: 560px; line-height: 1.8; font-size: 1.05rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
         .contact-layout {
