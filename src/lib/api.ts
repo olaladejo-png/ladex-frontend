@@ -55,6 +55,7 @@ export interface Service {
 export interface TeamMember {
     id: number; documentId: string; name: string; role: string;
     bio?: string; image?: StrapiImage; order: number;
+    flag?: string; location?: string;
 }
 
 export interface AboutPage {
