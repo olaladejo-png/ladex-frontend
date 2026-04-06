@@ -1,6 +1,6 @@
 'use client';
 
-export default function WhatsAppButton({ linkedinUrl = "https://www.linkedin.com/company/ladexgroup" }: { linkedinUrl?: string }) {
+export default function WhatsAppButton({ linkedinUrl = "https://www.linkedin.com/company/ladexgroup", whatsappUrl = "https://wa.me/4915218162816" }: { linkedinUrl?: string, whatsappUrl?: string }) {
   return (
     <>
       <style>{`
@@ -37,7 +37,7 @@ export default function WhatsAppButton({ linkedinUrl = "https://www.linkedin.com
           </svg>
         </a>
         <a
-          href="https://wa.me/4915218162816"
+          href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="float-btn wa-btn"

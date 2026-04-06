@@ -10,10 +10,7 @@ const NAV_LINKS = [
   { label: 'Contact', href: '/contact' },
 ];
 
-const WHATSAPP_NG = 'https://wa.me/2347069606542';
-const EMAIL = 'sales@ladexgroup.com';
-
-export default function Header({ siteName }: { siteName: string }) {
+export default function Header({ siteName, email, whatsappUrl }: { siteName: string; email: string; whatsappUrl: string; }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -122,10 +119,10 @@ export default function Header({ siteName }: { siteName: string }) {
       <div className="announce-bar">
         <div className="container">
           <div className="announce-inner">
-            <span className="announce-left">Germany-based procurement &amp; export — Quality Without Compromise. Europe to Africa.</span>
+            <div className="announce-left">Quality Without Compromise. Europe to Africa.</div>
             <div className="announce-links">
-              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-              <a href={WHATSAPP_NG} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp Support</a>
+              <a href={`mailto:${email}`}>{email}</a>
             </div>
           </div>
         </div>

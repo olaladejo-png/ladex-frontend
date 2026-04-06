@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroCarousel from '@/components/HeroCarousel';
-import { getCarousels, getStrapiMediaUrl } from '@/lib/api';
+import { getCarousels, getServices, getStrapiMediaUrl } from '@/lib/api';
 import Icon, { IconName } from '@/components/Icon';
 
 export const metadata: Metadata = {
@@ -37,6 +37,18 @@ const HOW_IT_WORKS = [
 
 export default async function HomePage() {
   const carousels = await getCarousels();
+  const strapiServices = await getServices();
+  
+  let displayServices = SECTORS;
+  if (strapiServices.length > 0) {
+    displayServices = strapiServices.map(s => ({
+      slug: s.slug || '',
+      icon: s.icon || 'settings',
+      image: s.image?.url ? getStrapiMediaUrl(s.image.url) : '/sectors/construction.jpg',
+      title: s.title,
+      desc: s.description || ''
+    }));
+  }
 
   return (
     <>
@@ -249,7 +261,7 @@ export default async function HomePage() {
           <h2 className="section-title">Sectors We Serve</h2>
           <p className="section-lead">We supply equipment and solutions across a broad range of critical industries throughout Nigeria and West Africa.</p>
           <div className="sectors-grid">
-            {SECTORS.map((s) => (
+            {displayServices.map((s) => (
               <Link key={s.title} href="/contact" className="sector-card">
                 <div className="sector-card-img">
                   {/* eslint-disable-next-line @next/next/no-img-element */}

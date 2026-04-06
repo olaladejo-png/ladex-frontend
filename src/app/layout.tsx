@@ -49,6 +49,12 @@ export default async function RootLayout({
 }>) {
   const settings = await getGlobalSettings();
 
+  const siteName = settings?.site_name || "Ladex Group";
+  const email = settings?.contact_email || "sales@ladexgroup.com";
+  const rawWa = settings?.contact_phone || "+49 1521 816 2816";
+  const whatsappUrl = `https://wa.me/${rawWa.replace(/\D/g, '')}`;
+  const linkedinUrl = settings?.linkedin_url || "https://www.linkedin.com/company/ladexgroup";
+
   return (
     <html lang="en">
       <head>
@@ -56,10 +62,10 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="antialiased">
-        <Header siteName={settings?.site_name || "Ladex Group"} />
+        <Header siteName={siteName} email={email} whatsappUrl={whatsappUrl} />
         <main>{children}</main>
         <Footer settings={settings} />
-        <WhatsAppButton />
+        <WhatsAppButton linkedinUrl={linkedinUrl} whatsappUrl={whatsappUrl} />
       </body>
     </html>
   );

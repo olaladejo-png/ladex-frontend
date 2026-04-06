@@ -8,41 +8,35 @@ export const metadata: Metadata = {
   description: 'Contact Ladex Group to source European equipment, request a quotation or discuss your project. We respond within 48 business hours.',
 };
 
-const CONTACT_ITEMS = [
-  {
-    icon: '✉',
-    label: 'Email',
-    value: 'sales@ladexgroup.com',
-    href: 'mailto:sales@ladexgroup.com',
-    note: 'We respond within 48 business hours',
-  },
-  {
-    icon: '🇩🇪',
-    label: 'Germany',
-    value: '+49 1521 816 2816',
-    href: 'tel:+4915218162816',
-    note: 'European Operations',
-  },
-  {
-    icon: '🇳🇬',
-    label: 'Nigeria (WhatsApp)',
-    value: '+234 706 960 6542',
-    href: 'https://wa.me/2347069606542',
-    note: 'Click to open WhatsApp',
-    external: true,
-  },
-  {
-    icon: '📞',
-    label: 'Nigeria (Phone)',
-    value: '+234 704 058 0988',
-    href: 'tel:+2347040580988',
-    note: 'Ibadan & Lagos operations',
-  },
-];
+import { getGlobalSettings } from '@/lib/api';
 
+export default async function ContactPage() {
+  const settings = await getGlobalSettings();
 
+  const email = settings?.contact_email || 'sales@ladexgroup.com';
+  const phoneNG = settings?.contact_phone || '+234 704 058 0988';
+  const whatsappNG = '+234 706 960 6542'; // Explicitly preserved per brief if needed via whatsapp field later
+  const phoneDE = '+49 1521 816 2816';
 
-export default function ContactPage() {
+  const displayItems = [
+    {
+      icon: '✉', label: 'Email', value: email, href: `mailto:${email}`,
+      note: 'We respond within 48 business hours',
+    },
+    {
+      icon: '🇩🇪', label: 'Germany', value: phoneDE, href: `tel:${phoneDE.replace(/\s+/g, '')}`,
+      note: 'European Operations',
+    },
+    {
+      icon: '🇳🇬', label: 'Nigeria (WhatsApp)', value: whatsappNG, href: `https://wa.me/${whatsappNG.replace(/\D/g, '')}`,
+      note: 'Click to open WhatsApp', external: true,
+    },
+    {
+      icon: '📞', label: 'Nigeria (Phone)', value: phoneNG, href: `tel:${phoneNG.replace(/\s+/g, '')}`,
+      note: 'Ibadan & Lagos operations',
+    },
+  ];
+
   return (
     <>
       <style>{`
@@ -146,7 +140,7 @@ export default function ContactPage() {
                 <Icon name="mail-open" size={18} /> Contact Channels
               </div>
               <div className="contact-card">
-                {CONTACT_ITEMS.map((c) => (
+                {displayItems.map((c) => (
                   <div key={c.label} className="contact-card-item">
                     <div className="ccard-icon">{c.icon}</div>
                     <div>
