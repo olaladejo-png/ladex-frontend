@@ -38,19 +38,11 @@ export interface Carousel {
     order: number; is_active: boolean;
 }
 
-export interface NewsEvent {
-    id: number; documentId: string; title: string; slug: string;
-    excerpt?: string; body: string; date: string; image: StrapiImage;
-    category: string; is_featured: boolean; publishedAt: string;
-}
-
 export interface Service {
     id: number; documentId: string; title: string; description?: string;
     icon?: string; image?: StrapiImage; slug: string; order: number;
     included_items?: string[];
 }
-
-
 
 export interface TeamMember {
     id: number; documentId: string; name: string; role: string;
@@ -78,29 +70,6 @@ export async function getCarousels(): Promise<Carousel[]> {
         'populate': 'image', 'pagination[pageSize]': '10',
     });
     return res?.data || [];
-}
-
-export async function getAllNews(page = 1, pageSize = 12): Promise<{ data: NewsEvent[]; total: number }> {
-    const res = await fetchAPI<{ data: NewsEvent[]; meta: { pagination: { total: number } } }>('/news-events', {
-        'sort': 'date:desc', 'populate': 'image',
-        'pagination[page]': String(page), 'pagination[pageSize]': String(pageSize),
-    });
-    return { data: res?.data || [], total: res?.meta?.pagination?.total || 0 };
-}
-
-export async function getFeaturedNews(): Promise<NewsEvent[]> {
-    const res = await fetchAPI<{ data: NewsEvent[] }>('/news-events', {
-        'filters[is_featured][$eq]': 'true', 'sort': 'date:desc',
-        'populate': 'image', 'pagination[pageSize]': '3',
-    });
-    return res?.data || [];
-}
-
-export async function getNewsBySlug(slug: string): Promise<NewsEvent | null> {
-    const res = await fetchAPI<{ data: NewsEvent[] }>('/news-events', {
-        'filters[slug][$eq]': slug, 'populate': 'image,seo.shareImage',
-    });
-    return res?.data?.[0] || null;
 }
 
 export async function getServices(): Promise<Service[]> {
