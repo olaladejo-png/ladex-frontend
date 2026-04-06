@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Icon, { IconName } from '@/components/Icon';
-import { getTeamMembers, getStrapiMediaUrl } from '@/lib/api';
+import { getTeamMembers, getAboutPage, getStrapiMediaUrl } from '@/lib/api';
 
 export const metadata: Metadata = {
   title: 'About Ladex Group – Germany-Based, Africa-Focused',
@@ -47,6 +47,10 @@ export default async function AboutPage() {
   const team = await getTeamMembers();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const displayTeam: any[] = team.length > 0 ? team : MOCK_TEAM;
+
+  const aboutPage = await getAboutPage();
+  const dynamicMission = aboutPage?.mission || 'To bridge the gap between European excellence and African opportunity by delivering premium products, technical expertise and reliable trade solutions to Nigeria and West African markets.';
+  const dynamicVision = aboutPage?.vision || 'To be the most trusted bridge between European manufacturers and African industrial sectors, defined by our commitment to quality, technical precision, and operational excellence.';
 
   return (
     <>
@@ -113,8 +117,8 @@ export default async function AboutPage() {
 
       {/* Hero */}
       <div className="about-hero">
-        <Image src="/about-hero.png" alt="Ladex Group operations" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.35 }} priority />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,15,15,0.9) 40%, rgba(15,15,15,0.5))', zIndex: 5 }} />
+        <Image src="/hero/hero_engineering.jpg" alt="Ladex Group operations" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.55 }} priority />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,10,0.95) 10%, rgba(10,10,10,0.65))', zIndex: 5 }} />
         <div className="about-hero-content">
           <div className="container">
             <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -139,13 +143,13 @@ export default async function AboutPage() {
             <div className="mv-card mv-card-dark">
               <div className="mv-eyebrow">Our Mission</div>
               <h3>Bridging European Excellence &amp; African Opportunity</h3>
-              <p>To bridge the gap between European excellence and African opportunity by delivering premium products, technical expertise and reliable trade solutions to Nigeria and West African markets.</p>
+              <p>{dynamicMission}</p>
             </div>
             <div className="mv-card mv-card-light">
               <div className="mv-eyebrow">Our Vision</div>
               <h3>West Africa&apos;s Trusted Gateway</h3>
               <h3>The Preferred Procurement Partner</h3>
-              <p>To be the most trusted bridge between European manufacturers and African industrial sectors, defined by our commitment to quality, technical precision, and operational excellence.</p>
+              <p>{dynamicVision}</p>
             </div>
           </div>
         </div>

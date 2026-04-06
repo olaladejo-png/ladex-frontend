@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroCarousel from '@/components/HeroCarousel';
-import { getCarousels, getServices, getStrapiMediaUrl } from '@/lib/api';
+import { getCarousels, getServices, getAboutPage, getStrapiMediaUrl } from '@/lib/api';
 import Icon, { IconName } from '@/components/Icon';
 
 export const metadata: Metadata = {
@@ -49,6 +49,10 @@ export default async function HomePage() {
       desc: s.description || ''
     }));
   }
+
+  const aboutPage = await getAboutPage();
+  const dynamicMission = aboutPage?.mission || 'To bridge the gap between European excellence and African opportunity by delivering premium products, technical expertise and reliable trade solutions to Nigeria and West African markets.';
+  const dynamicVision = aboutPage?.vision || 'To become West Africa\'s trusted gateway to European industrial solutions and strategic partnerships — setting the benchmark for quality and reliability.';
 
   return (
     <>
@@ -243,12 +247,12 @@ export default async function HomePage() {
             <div className="mv-card mv-card-mission">
               <div className="mv-eyebrow">Our Mission</div>
               <h3>Bridging European Excellence &amp; African Opportunity</h3>
-              <p>To bridge the gap between European excellence and African opportunity by delivering premium products, technical expertise and reliable trade solutions to Nigeria and West African markets.</p>
+              <p>{dynamicMission}</p>
             </div>
             <div className="mv-card mv-card-vision">
               <div className="mv-eyebrow" style={{ color: 'var(--ladex-gold)' }}>Our Vision</div>
               <h3>West Africa&apos;s Trusted Gateway</h3>
-              <p>To become West Africa&apos;s trusted gateway to European industrial solutions and strategic partnerships — setting the benchmark for quality and reliability.</p>
+              <p>{dynamicVision}</p>
             </div>
           </div>
         </div>

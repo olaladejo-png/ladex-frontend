@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import Icon from '@/components/Icon';
 
@@ -103,16 +104,12 @@ export default async function ServicesPage() {
     <>
       <style>{`
         .service-hero {
-          background: var(--ladex-black); padding: 6rem 0 5rem;
+          background: #0a0a0a; padding: 7rem 0 6rem;
           position: relative; overflow: hidden;
         }
-        .service-hero::after {
-          content: ''; position: absolute; right: -5%; top: -20%;
-          width: 45%; height: 140%; background: var(--ladex-gold); opacity: 0.03;
-          transform: rotate(-15deg); border-radius: 40px; pointer-events: none;
-        }
-        .service-hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; margin-bottom: 1.25rem; line-height: 1.05; }
-        .service-hero p { color: rgba(255,255,255,.5); font-size: 1.1rem; font-weight: 500; max-width: 620px; line-height: 1.8; }
+        .service-hero-content { position: relative; z-index: 10; }
+        .service-hero h1 { color: #fff; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; margin-bottom: 1.25rem; line-height: 1.05; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+        .service-hero p { color: rgba(255,255,255,.7); font-size: 1.1rem; font-weight: 500; max-width: 620px; line-height: 1.8; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
         .services-list { padding: 5rem 0; display: flex; flex-direction: column; gap: 3rem; }
 
@@ -156,7 +153,9 @@ export default async function ServicesPage() {
 
       {/* Hero */}
       <div className="service-hero">
-        <div className="container">
+        <Image src="/hero/hero_logistics.jpg" alt="Ladex Group Services" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.5 }} priority />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.5) 100%)', zIndex: 5 }} />
+        <div className="container service-hero-content">
           <nav className="breadcrumb" aria-label="Breadcrumb" style={{ marginBottom: '2rem' }}>
             <Link href="/" style={{ color: 'var(--ladex-gold)', fontWeight: 800 }}>Home</Link>
             <span className="breadcrumb-sep" style={{ color: 'rgba(255,255,255,.2)' }}>›</span>

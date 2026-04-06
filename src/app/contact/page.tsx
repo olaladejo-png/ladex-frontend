@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import Icon from '@/components/Icon';
 import ContactForm from '@/components/ContactForm';
@@ -41,16 +42,12 @@ export default async function ContactPage() {
     <>
       <style>{`
         .contact-hero {
-          background: var(--ladex-black); color: #fff;
-          padding: 5.5rem 0 4.5rem; position: relative; overflow: hidden;
+          background: #0a0a0a; color: #fff;
+          padding: 6.5rem 0 5.5rem; position: relative; overflow: hidden;
         }
-        .contact-hero::after {
-          content: ''; position: absolute; right: -5%; top: -20%;
-          width: 40%; height: 140%; background: var(--ladex-gold); opacity: 0.04;
-          transform: rotate(-15deg); border-radius: 40px; pointer-events: none;
-        }
-        .contact-hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 1.25rem; max-width: 700px; line-height: 1; text-transform: uppercase; }
-        .contact-hero p { color: rgba(255,255,255,.5); max-width: 560px; line-height: 1.8; font-size: 1.05rem; }
+        .contact-hero-content { position: relative; z-index: 10; }
+        .contact-hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 1.25rem; max-width: 700px; line-height: 1; text-transform: uppercase; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+        .contact-hero p { color: rgba(255,255,255,.7); max-width: 560px; line-height: 1.8; font-size: 1.05rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
 
         .contact-layout {
           display: grid; grid-template-columns: 1fr 400px; gap: 4rem;
@@ -111,14 +108,16 @@ export default async function ContactPage() {
 
       {/* Hero */}
       <div className="contact-hero">
-        <div className="container">
+        <Image src="/hero/hero_power.jpg" alt="Ladex Group Contact" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.45 }} priority />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 100%)', zIndex: 5 }} />
+        <div className="container contact-hero-content">
           <nav className="breadcrumb" aria-label="Breadcrumb" style={{ marginBottom: '2rem' }}>
             <Link href="/" style={{ color: 'var(--ladex-gold)', fontWeight: 800 }}>Home</Link>
             <span className="breadcrumb-sep" style={{ color: 'rgba(255,255,255,.2)' }}>›</span>
             <span style={{ color: '#fff' }}>Contact</span>
           </nav>
-          <h1>Let&apos;s Talk</h1>
-          <p>Tell us what you need. We will source the right European equipment, provide a competitive quote, and manage delivery to Nigeria and West Africa.</p>
+          <h1>Contact Us</h1>
+          <p>Whether you require a quotation, technical evaluation, or wish to discuss a strategic partnership, our German and Nigerian teams are ready to respond.</p>
         </div>
       </div>
 
