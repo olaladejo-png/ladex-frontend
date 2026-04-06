@@ -32,10 +32,11 @@ export default function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           data: {
-            name: formData.fullName,
+            full_name: formData.fullName,
             email: formData.email,
             phone: formData.phone,
-            subject: `[${formData.service}] ${formData.subject}`,
+            service: formData.service,
+            subject: formData.subject,
             message: formData.message,
           },
         }),
