@@ -223,7 +223,7 @@ export default async function HomePage() {
       <div className="about-split">
         <div className="about-split-inner">
           <div className="about-image-panel fade-up">
-            <Image src="/sectors/automation.jpg" alt="Ladex Group Germany-Nigeria operations" fill sizes="(max-width:1024px) 100vw, 45vw" style={{ objectFit: 'cover' }} />
+            <Image src="/hero/hero_engineering.jpg" alt="Ladex Group Germany-Nigeria operations" fill sizes="(max-width:1024px) 100vw, 45vw" style={{ objectFit: 'cover' }} />
           </div>
           <div className="about-content-panel fade-up stagger-1">
             <p className="section-eyebrow">Who We Are</p>

@@ -224,8 +224,8 @@ export default function HeroCarousel({ slides }: { slides: Carousel[] }) {
                     {slide.link_text || 'Learn More'}
                   </Link>
                 )}
-                <Link href="/products" className="hero-btn hero-btn-outline">
-                  View Catalog
+                <Link href="/services" className="hero-btn hero-btn-outline">
+                  View Services
                 </Link>
               </div>
             </div>
