@@ -10,12 +10,19 @@ const nextConfig: NextConfig = {
         pathname: '/uploads/**',
       },
       {
+        // Strapi Cloud — replace with your actual subdomain
+        // e.g. if your Strapi Cloud URL is https://abc123.strapiapp.com
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: '*.strapiapp.com',
+        pathname: '/uploads/**',
       },
       {
         protocol: 'https',
-        hostname: '**.unsplash.com',
+        hostname: '*.media.strapiapp.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
       },
     ],
   },

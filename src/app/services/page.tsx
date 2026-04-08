@@ -148,6 +148,11 @@ export default async function ServicesPage() {
           .service-item-left { aspect-ratio: 16/9; }
           .service-item-left h2 { font-size: 1.5rem; }
           .service-item-left-content { bottom: 1.5rem; left: 1.5rem; right: 1.5rem; }
+          .how-steps { grid-template-columns: 1fr; gap: 0; }
+          .how-step { text-align: left; padding: 1.75rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 1.25rem; }
+          .how-step:last-child { border-bottom: none; }
+          .how-step-num { margin: 0; flex-shrink: 0; width: 44px; height: 44px; font-size: 1.1rem; }
+          .how-banner { padding: 3.5rem 0; }
         }
       `}</style>
 
