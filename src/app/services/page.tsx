@@ -12,7 +12,7 @@ const SERVICES = [
     icon: 'package',
     image: '/pics/services/equipment-sourcing-supply.jpeg',
     title: 'Equipment Sourcing and Supply',
-    desc: 'We source and supply genuine European and American equipment directly to clients in Nigerian and West African. From supplier identification to delivery, we manage the full procurement process.',
+    desc: 'We source and supply genuine European and American equipment tailored to client requirements. From supplier selection to delivery, we manage the full procurement process.',
     products: [
       'Electrical testing and diagnostic equipment',
       'Industrial automation and PLC components',
@@ -28,8 +28,8 @@ const SERVICES = [
   {
     icon: 'handshake',
     image: '/pics/services/technical-representation.png',
-    title: 'Technical Representation',
-    desc: 'We act as a technical partner for European and American manufacturers in Nigeria and West Africa, supporting market entry, client engagement, and after-sales service.',
+    title: 'Technical Representation & Market Support',
+    desc: 'We act as a bridge between international manufacturers and African markets, supporting product positioning, technical engagement, and after-sales coordination.',
     products: [
       'Product specification support',
       'Technical advisory and selection guidance',
@@ -41,8 +41,8 @@ const SERVICES = [
   {
     icon: 'settings',
     image: '/pics/services/engineering-consultancy.png',
-    title: 'Engineering Consulting & Project Support',
-    desc: 'We support infrastructure and industrial projects by coordinating complete equipment solutions from specification to delivery.',
+    title: 'Engineering Consulting and Product Support',
+    desc: 'We support industrial and infrastructure projects with equipment selection, BOQ pricing, logistics coordination, and commissioning support.',
     products: [
       'Equipment specification and supplier selection',
       'BOQ pricing and quotation',
@@ -55,13 +55,13 @@ const SERVICES = [
   {
     icon: 'shield',
     image: '/pics/services/inspection-procurement-services.png',
-    title: 'Inspection & Procurement Services',
-    desc: 'We provide pre-shipment inspection and general procurement services to ensure quality, compliance and accuracy before delivery.',
+    title: 'Inspection and Procurement Services',
+    desc: 'We provide pre-shipment inspection, quality verification, and general procurement services to ensure accuracy, compliance, and reliability.',
     products: [
       'Physical inspection before shipment',
-      'We also support procurement of selected European products including industrial vehicles and specialized equipment based on client requirements.',
-      'Verification against specifications',
+      'Quality verification against specifications',
       'Detailed inspection reports with photos',
+      'General procurement support',
       'Coordination with logistics partners',
     ],
     cta: 'Get an Inspection Quote',
@@ -69,8 +69,8 @@ const SERVICES = [
   {
     icon: 'wheat',
     image: '/pics/agriculture-processing.png',
-    title: 'Agricultural & Poultry Solutions',
-    desc: 'We facilitate the sourcing and delivery of:',
+    title: 'Agricultural Import and Export Solutions',
+    desc: 'We facilitate the sourcing of hatching eggs, agricultural equipment and processing systems with their delivery.',
     products: [
       'Layers and broiler hatching eggs from certified European hatcheries',
       'Agricultural equipment and processing systems',
