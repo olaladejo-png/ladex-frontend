@@ -6,8 +6,8 @@ import { getCarousels, getAboutPage } from '@/lib/api';
 import Icon, { IconName } from '@/components/Icon';
 
 export const metadata: Metadata = {
-  title: 'Ladex Group – Quality Without Compromise. Europe to Africa.',
-  description: 'Germany-based procurement and export company supplying high-quality equipment and solutions from leading European manufacturers to Africa and other international markets.',
+  title: 'Ladex Group – Quality Without Compromise. Europe to the World.',
+  description: 'We supply high-quality European equipment and technical solutions for infrastructure and industrial projects worldwide, with a strong focus on Nigeria and West Africa.',
 };
 export const revalidate = 60;
 
@@ -208,7 +208,9 @@ export default async function HomePage() {
           .about-split-inner { grid-template-columns: 1fr; gap: 3rem; }
           .about-image-panel { aspect-ratio: 16/9; }
         }
+        .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
         @media (max-width: 768px) {
+          .intro-grid { grid-template-columns: 1fr; gap: 1.5rem; }
           .stats-grid { grid-template-columns: repeat(2, 1fr); }
           .stat-item:nth-child(2) { border-right: none; }
           .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
@@ -226,6 +228,18 @@ export default async function HomePage() {
 
       {/* Hero */}
       <HeroCarousel slides={carousels} />
+
+      {/* Intro Strip */}
+      <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '3.5rem 0' }}>
+        <div className="container intro-grid">
+          <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: 'var(--text-secondary)', fontWeight: 500, margin: 0 }}>
+            We supply high-quality European equipment and technical solutions for infrastructure and industrial projects worldwide, with a strong focus on Nigeria and West Africa.
+          </p>
+          <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'var(--text-muted)', margin: 0, borderLeft: '3px solid var(--ladex-gold)', paddingLeft: '1.75rem' }}>
+            From sourcing to delivery, we provide reliable procurement, logistics coordination, and technical support for engineering-driven industries.
+          </p>
+        </div>
+      </div>
 
       {/* Who We Are */}
       <div className="about-split">

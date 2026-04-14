@@ -210,7 +210,7 @@ export default function HeroCarousel({ slides }: { slides: Carousel[] }) {
             <div className="hero-overlay" />
             
             <div className="hero-content">
-              <div className="hero-eyebrow">Ladex Group Germany</div>
+              <div className="hero-eyebrow">Quality Without Compromise. Europe to the World.</div>
               {titlePart2 ? (
                   <h1 className="hero-title">{titlePart1}<br/><span>{titlePart2}</span></h1>
               ) : (
