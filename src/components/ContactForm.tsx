@@ -27,6 +27,7 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus('loading');
     try {
+      // Save to Strapi admin
       const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/contact-messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -42,6 +43,21 @@ export default function ContactForm() {
         }),
       });
       if (!res.ok) throw new Error('Failed to submit');
+
+      // Send email notification (fire and forget — don't block on failure)
+      fetch('/api/send-contact-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      }).catch(() => {});
+
       setStatus('success');
       setFormData({ fullName: '', email: '', phone: '', service: SERVICES[0], subject: '', message: '' });
     } catch {
