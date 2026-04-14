@@ -6,7 +6,7 @@ export type IconName =
     | 'settings' | 'graduation-cap' | 'scroll-text' | 'newspaper' | 'calendar'
     | 'megaphone' | 'globe' | 'landmark' | 'hospital' | 'heart-handshake'
     | 'stethoscope' | 'gem' | 'trending-up' | 'wrench' | 'file' | 'search' | 'mail' | 'clock'
-    | 'shield' | 'package' | 'truck' | 'mail-open';
+    | 'shield' | 'package' | 'truck' | 'mail-open' | 'phone';
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
     name: IconName;
@@ -93,6 +93,8 @@ export default function Icon({ name, size = 24, className = '', ...props }: Icon
             return <svg {...svgProps}><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>;
         case 'mail-open':
             return <svg {...svgProps}><path d="M21.2 8.4c.5.3.8.8.8 1.4v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.8c0-.6.3-1.1.8-1.4l7.5-4a2 2 0 0 1 1.4 0l7.5 4Z" /><path d="m22 10-10 7L2 10" /></svg>;
+        case 'phone':
+            return <svg {...svgProps}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></svg>;
         case 'shield':
             return <svg {...svgProps}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>;
         case 'package':
