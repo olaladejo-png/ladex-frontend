@@ -50,7 +50,7 @@ export default async function AboutPage() {
 
   const aboutPage = await getAboutPage();
   const dynamicMission = aboutPage?.mission || 'To bridge the gap between European excellence and African opportunity by delivering premium products, technical expertise and reliable trade solutions to Nigeria and West African markets.';
-  const dynamicVision = aboutPage?.vision || 'To be the most trusted bridge between European manufacturers and African industrial sectors, defined by our commitment to quality, technical precision, and operational excellence.';
+  const dynamicVision = aboutPage?.vision || 'To become West Africa\'s trusted gateway to European industrial solutions and strategic partnerships.';
 
   return (
     <>
@@ -148,7 +148,6 @@ export default async function AboutPage() {
             <div className="mv-card mv-card-light">
               <div className="mv-eyebrow">Our Vision</div>
               <h3>West Africa&apos;s Trusted Gateway</h3>
-              <h3>The Preferred Procurement Partner</h3>
               <p>{dynamicVision}</p>
             </div>
           </div>

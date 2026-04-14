@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
+  { label: 'Sectors', href: '/sectors' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -67,7 +68,7 @@ export default function Header({ siteName, email, whatsappUrl }: { siteName: str
         }
 
         .logo { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; text-decoration: none; }
-        .logo-img { width: 48px; height: 48px; object-fit: contain; flex-shrink: 0; }
+        .logo-img { width: 144px; height: 144px; object-fit: contain; flex-shrink: 0; }
         .logo-name { display: block; font-size: 1.15rem; font-weight: 900; letter-spacing: -0.03em; color: var(--ladex-black); text-transform: uppercase; line-height: 1.1; }
         .logo-sub { display: block; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ladex-gold); margin-top: 2px; }
 
@@ -140,10 +141,6 @@ export default function Header({ siteName, email, whatsappUrl }: { siteName: str
             <Link href="/" className="logo" aria-label={siteName}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo.png" alt="Ladex Group Logo" className="logo-img" />
-              <div>
-                <span className="logo-name">Ladex Group</span>
-                <span className="logo-sub">Europe to Africa</span>
-              </div>
             </Link>
 
             <nav className="nav-links" aria-label="Main navigation">

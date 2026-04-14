@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroCarousel from '@/components/HeroCarousel';
-import { getCarousels, getServices, getAboutPage, getStrapiMediaUrl } from '@/lib/api';
+import { getCarousels, getAboutPage } from '@/lib/api';
 import Icon, { IconName } from '@/components/Icon';
 
 export const metadata: Metadata = {
@@ -20,12 +20,12 @@ const WHY_US = [
 ];
 
 const SECTORS = [
-  { slug: 'oil-and-gas', icon: 'droplet', image: '/sectors/oil-gas.jpg?v=2', title: 'Oil and Gas', desc: 'Supplying instrumentation, valves, safety and process equipment to upstream and downstream oil & gas operations.' },
-  { slug: 'power-electrical-instrumentation', icon: 'settings', image: '/sectors/power-electrical.jpg?v=2', title: 'Power, Electrical & Instrumentation', desc: 'Protection relays, switchgear, power analysers, substation equipment and cables from leading European manufacturers.' },
-  { slug: 'automation-control-systems', icon: 'box', image: '/sectors/automation.jpg?v=2', title: 'Automation and Control Systems', desc: 'Industrial PLC components, SCADA systems and automation equipment for process control and efficiency.' },
-  { slug: 'construction-infrastructure', icon: 'landmark', image: '/sectors/construction.jpg?v=2', title: 'Construction and Infrastructure', desc: 'High-grade equipment for civil, structural and infrastructure projects across West Africa.' },
-  { slug: 'mining-heavy-engineering', icon: 'truck', image: '/sectors/mining.jpg?v=2', title: 'Mining and Heavy Engineering', desc: 'Robust equipment and NDT/structural inspection tools for mining and heavy industrial operations.' },
-  { slug: 'agriculture-agro-processing', icon: 'wheat', image: '/sectors/agriculture.jpg?v=2', title: 'Agriculture and Agro-processing', desc: 'Hatching eggs from certified European hatcheries, agricultural equipment and processing systems.' },
+  { slug: 'oil-and-gas', icon: 'droplet', image: '/sectors/oil-gas.jpg', title: 'Oil and Gas', desc: 'Supplying instrumentation, valves, safety and process equipment to upstream and downstream oil & gas operations.' },
+  { slug: 'power-electrical-instrumentation', icon: 'settings', image: '/sectors/power-electrical.jpg', title: 'Power, Electrical & Instrumentation', desc: 'Protection relays, switchgear, power analysers, substation equipment and cables from leading European manufacturers.' },
+  { slug: 'automation-control-systems', icon: 'box', image: '/sectors/automation.jpg', title: 'Automation and Control Systems', desc: 'Industrial PLC components, SCADA systems and automation equipment for process control and efficiency.' },
+  { slug: 'construction-infrastructure', icon: 'landmark', image: '/sectors/construction.jpg', title: 'Construction and Infrastructure', desc: 'High-grade equipment for civil, structural and infrastructure projects across West Africa.' },
+  { slug: 'mining-heavy-engineering', icon: 'truck', image: '/sectors/mining.jpg', title: 'Mining and Heavy Engineering', desc: 'Robust equipment and NDT/structural inspection tools for mining and heavy industrial operations.' },
+  { slug: 'agriculture-agro-processing', icon: 'wheat', image: '/sectors/agriculture.jpg', title: 'Agriculture and Agro-processing', desc: 'Hatching eggs from certified European hatcheries, agricultural equipment and processing systems.' },
 ];
 
 
@@ -37,18 +37,6 @@ const HOW_IT_WORKS = [
 
 export default async function HomePage() {
   const carousels = await getCarousels();
-  const strapiServices = await getServices();
-  
-  let displayServices = SECTORS;
-  if (strapiServices.length > 0) {
-    displayServices = strapiServices.map(s => ({
-      slug: s.slug || '',
-      icon: s.icon || 'settings',
-      image: s.image?.url ? getStrapiMediaUrl(s.image.url) : '/sectors/construction.jpg',
-      title: s.title,
-      desc: s.description || ''
-    }));
-  }
 
   const aboutPage = await getAboutPage();
   const dynamicMission = aboutPage?.mission || 'To bridge the gap between European excellence and African opportunity by delivering premium products, technical expertise and reliable trade solutions to Nigeria and West African markets.';
@@ -223,7 +211,7 @@ export default async function HomePage() {
       <div className="about-split">
         <div className="about-split-inner">
           <div className="about-image-panel fade-up">
-            <Image src="/hero/hero_engineering.jpg" alt="Ladex Group Germany-Nigeria operations" fill sizes="(max-width:1024px) 100vw, 45vw" style={{ objectFit: 'cover' }} />
+            <Image src="/pics/services/inspection-procurement-services.png" alt="Ladex Group Germany-Nigeria operations" fill sizes="(max-width:1024px) 100vw, 45vw" style={{ objectFit: 'cover' }} />
           </div>
           <div className="about-content-panel fade-up stagger-1">
             <p className="section-eyebrow">Who We Are</p>
@@ -265,8 +253,8 @@ export default async function HomePage() {
           <h2 className="section-title">Sectors We Serve</h2>
           <p className="section-lead">We supply equipment and solutions across a broad range of critical industries throughout Nigeria and West Africa.</p>
           <div className="sectors-grid">
-            {displayServices.map((s) => (
-              <Link key={s.title} href="/contact" className="sector-card">
+            {SECTORS.map((s) => (
+              <Link key={s.title} href={`/sectors#${s.slug}`} className="sector-card">
                 <div className="sector-card-img">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={s.image} alt={s.title} loading="lazy" />

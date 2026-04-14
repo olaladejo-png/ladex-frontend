@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico" },
-      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
     apple: [{ url: "/apple-touch-icon.png" }],
   },
@@ -53,7 +53,7 @@ export default async function RootLayout({
   const email = settings?.contact_email || "sales@ladexgroup.com";
   const rawWa = settings?.contact_phone || "+49 1521 816 2816";
   const whatsappUrl = `https://wa.me/${rawWa.replace(/\D/g, '')}`;
-  const linkedinUrl = settings?.linkedin_url || "https://www.linkedin.com/company/ladexgroup";
+  const linkedinUrl = settings?.linkedin_url || "https://linkedin.com/in/iyiola-ladejo";
 
   return (
     <html lang="en">

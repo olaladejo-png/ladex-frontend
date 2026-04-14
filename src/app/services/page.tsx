@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import Icon from '@/components/Icon';
 
 export const metadata: Metadata = {
   title: 'Our Services | Ladex Group – Equipment Sourcing, Technical Representation & More',
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
 const SERVICES = [
   {
     icon: 'package',
-    image: '/sectors/construction.jpg?v=2',
+    image: '/pics/services/equipment-sourcing-supply.jpeg',
     title: 'Equipment Sourcing and Supply',
     desc: 'We source and supply genuine European and American equipment directly to clients in Nigerian and West African. From supplier identification to delivery, we manage the full procurement process.',
     products: [
@@ -28,7 +27,7 @@ const SERVICES = [
   },
   {
     icon: 'handshake',
-    image: '/sectors/automation.jpg?v=2',
+    image: '/pics/services/technical-representation.png',
     title: 'Technical Representation',
     desc: 'We act as a technical partner for European and American manufacturers in Nigeria and West Africa, supporting market entry, client engagement, and after-sales service.',
     products: [
@@ -41,7 +40,7 @@ const SERVICES = [
   },
   {
     icon: 'settings',
-    image: '/sectors/power-electrical.jpg?v=2',
+    image: '/pics/services/engineering-consultancy.png',
     title: 'Engineering Consulting & Project Support',
     desc: 'We support infrastructure and industrial projects by coordinating complete equipment solutions from specification to delivery.',
     products: [
@@ -55,7 +54,7 @@ const SERVICES = [
   },
   {
     icon: 'shield',
-    image: '/sectors/mining.jpg?v=2',
+    image: '/pics/services/inspection-procurement-services.png',
     title: 'Inspection & Procurement Services',
     desc: 'We provide pre-shipment inspection and general procurement services to ensure quality, compliance and accuracy before delivery.',
     products: [
@@ -68,8 +67,8 @@ const SERVICES = [
     cta: 'Get an Inspection Quote',
   },
   {
-    icon: 'leaf',
-    image: '/sectors/agriculture.jpg?v=2',
+    icon: 'wheat',
+    image: '/pics/agriculture-processing.png',
     title: 'Agricultural & Poultry Solutions',
     desc: 'We facilitate the sourcing and delivery of:',
     products: [
@@ -82,24 +81,7 @@ const SERVICES = [
   },
 ];
 
-import { getServices, getStrapiMediaUrl } from '@/lib/api';
-
 export default async function ServicesPage() {
-  const strapiServices = await getServices();
-  let displayServices = SERVICES;
-  
-  if (strapiServices.length > 0) {
-    displayServices = strapiServices.map(s => ({
-      icon: s.icon || 'settings',
-      image: s.image?.url ? getStrapiMediaUrl(s.image.url) : '/sectors/construction.jpg',
-      title: s.title,
-      desc: s.description || '',
-      products: Array.isArray(s.included_items) ? s.included_items : [],
-      cta: 'Get a Quote',
-      afterText: undefined
-    }));
-  }
-
   return (
     <>
       <style>{`
@@ -115,22 +97,23 @@ export default async function ServicesPage() {
 
         .service-item { display: grid; grid-template-columns: minmax(300px, 1fr) 1.5fr; gap: 4rem; padding: 4rem 0; border-bottom: 1px solid var(--border); align-items: center; }
         .service-item:last-child { border-bottom: none; }
-        
+
         .service-item-left { position: relative; width: 100%; aspect-ratio: 4/5; overflow: hidden; border-radius: var(--radius-sm); }
+        .service-item-left img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+        .service-item:hover .service-item-left img { transform: scale(1.05); }
         .service-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,15,15,0.95), rgba(15,15,15,0.2)); }
         .service-item-left-content { position: absolute; bottom: 2rem; left: 2.5rem; right: 2.5rem; }
-        .service-icon { margin-bottom: 1rem; color: var(--ladex-gold); }
         .service-num { font-size: 0.85rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; color: var(--ladex-gold); margin-bottom: 0.75rem; }
         .service-item-left h2 { font-size: 1.75rem; font-weight: 900; line-height: 1.15; margin: 0; color: #fff; text-transform: uppercase; }
 
         .service-item-right { padding-top: 1rem; }
         .service-item-right p { font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem; max-width: 540px; }
-        
+
         .includes-label { font-size: 0.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-primary); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--ladex-gold); display: inline-block; }
         .product-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0.85rem; margin-bottom: 2.5rem; }
         .product-item { font-size: 0.95rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 0.75rem; line-height: 1.5; }
         .svc-li-dot { width: 6px; height: 6px; background: var(--ladex-gold); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
-        
+
         .svc-actions { margin-top: 2.5rem; }
 
         .how-banner { background: var(--bg-off); border-top: 1px solid var(--border); padding: 5rem 0; }
@@ -174,16 +157,15 @@ export default async function ServicesPage() {
       {/* Services List */}
       <div className="container">
         <div className="services-list">
-          {displayServices.map((svc, i) => (
+          {SERVICES.map((svc, i) => (
             <div key={svc.title} className="service-item fade-up">
               <div className="service-item-left">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={svc.image} alt={svc.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
                 <div className="service-img-overlay" />
                 <div className="service-item-left-content">
-                    <div className="service-icon"><Icon name={svc.icon as any} size={32} /></div>
-                    <div className="service-num">Service {String(i + 1).padStart(2, '0')}</div>
-                    <h2>{svc.title}</h2>
+                  <div className="service-num">Service {String(i + 1).padStart(2, '0')}</div>
+                  <h2>{svc.title}</h2>
                 </div>
               </div>
               <div className="service-item-right">
