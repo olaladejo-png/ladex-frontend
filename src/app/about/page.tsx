@@ -37,7 +37,7 @@ const MOCK_TEAM = [
   {
     name: 'Iyiola Ladejo',
     role: 'Executive Director',
-    bio: 'Mr. Iyiola Ladejo holds an MSc in Electrical Engineering from Grenoble INP – Ense3, France.',
+    bio: 'Mr. Iyiola Ladejo holds an MSc in Electrical Engineering from Grenoble INP – Ense3, France. Based in Munich Area, Germany, he leads European procurement, supplier relations, export logistics, and international business development.',
     flag: '🇩🇪',
     location: 'Munich Area, Germany',
   },

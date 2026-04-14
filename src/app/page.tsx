@@ -7,7 +7,7 @@ import Icon, { IconName } from '@/components/Icon';
 
 export const metadata: Metadata = {
   title: 'Ladex Group – Quality Without Compromise. Europe to Africa.',
-  description: 'Germany-based procurement and export company supplying high-quality European equipment and industrial solutions to Nigeria and West Africa.',
+  description: 'Germany-based procurement and export company supplying high-quality equipment and solutions from leading European manufacturers to Africa and other international markets.',
 };
 export const revalidate = 60;
 
@@ -236,9 +236,9 @@ export default async function HomePage() {
           <div className="about-content-panel fade-up stagger-1">
             <p className="section-eyebrow">Who We Are</p>
             <div className="about-line" />
-            <h2>Germany-Based. Africa-Focused.</h2>
-            <p>Ladex Group is a Germany-based procurement and export company supplying high-quality equipment and solutions from leading European manufacturers to Nigeria and West Africa.</p>
-            <p>With operations in Germany and Nigeria, we combine direct access to European supply chains with on-ground technical support and delivery coordination in Africa.</p>
+            <h2>Rooted in Engineering. Built for Trade.</h2>
+            <p>Ladex Group is a Germany-based procurement and export company supplying high-quality equipment and solutions from leading European manufacturers to Africa and other international markets.</p>
+            <p>With operations in Germany and Nigeria, we combine direct access to European supply chains with on-ground technical support and delivery coordination globally.</p>
             <div style={{ marginTop: '2rem' }}>
               <Link href="/about" className="btn btn-dark">Learn More About Us →</Link>
             </div>
