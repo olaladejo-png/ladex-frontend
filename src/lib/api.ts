@@ -56,6 +56,12 @@ export interface AboutPage {
     body?: string; objectives?: string; background?: string;
 }
 
+export interface Sector {
+    id: number; documentId: string; title: string; slug: string;
+    description?: string; icon?: string; image?: StrapiImage;
+    products?: string[]; order: number;
+}
+
 export interface GlobalSetting {
     documentId: string; site_name: string; site_tagline?: string;
     contact_email?: string; contact_phone?: string; address?: string;
@@ -89,6 +95,13 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
 export async function getAboutPage(): Promise<AboutPage | null> {
     const res = await fetchAPI<{ data: AboutPage }>('/about-page', { 'populate': 'hero_image' });
     return res?.data || null;
+}
+
+export async function getSectors(): Promise<Sector[]> {
+    const res = await fetchAPI<{ data: Sector[] }>('/sectors', {
+        'sort': 'order:asc', 'populate': 'image', 'pagination[pageSize]': '50',
+    });
+    return res?.data || [];
 }
 
 export async function getGlobalSettings(): Promise<GlobalSetting | null> {

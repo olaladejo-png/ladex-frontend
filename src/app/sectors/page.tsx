@@ -1,17 +1,20 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getSectors, getStrapiMediaUrl } from '@/lib/api';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Sectors We Serve | Ladex Group – European Equipment for Nigeria & West Africa',
-  description: 'Ladex Group supplies European equipment across Oil & Gas, Power, Automation, Construction, Mining and Agriculture sectors in Nigeria and West Africa.',
+  description: 'Ladex Group supplies European equipment across 10 critical sectors including Oil & Gas, Power, Automation, Telecommunications, Healthcare and Agriculture throughout Nigeria and West Africa.',
 };
 
 const SECTORS = [
   {
     slug: 'oil-and-gas',
     image: '/sectors/oil-gas.jpg',
-    title: 'Oil and Gas',
+    title: 'Oil & Gas',
     desc: 'We supply instrumentation, safety, and process equipment to upstream and downstream oil and gas operations across Nigeria and West Africa. Our sourcing covers the full lifecycle of oil and gas projects — from exploration and drilling through to production, refining and distribution.',
     products: [
       'Flow meters and level instruments',
@@ -27,10 +30,10 @@ const SECTORS = [
     ],
   },
   {
-    slug: 'power-electrical-instrumentation',
+    slug: 'power-electrical-systems',
     image: '/sectors/power-electrical.jpg',
-    title: 'Power, Electrical & Instrumentation',
-    desc: 'We source and supply a wide range of electrical and instrumentation equipment from leading European manufacturers. From power generation and distribution through to substation protection and power quality management, we serve utilities, industrial plants and infrastructure operators.',
+    title: 'Power & Electrical Systems',
+    desc: 'We source and supply a wide range of electrical equipment from leading European manufacturers. From power generation and distribution through to substation protection and power quality management, we serve utilities, industrial plants and infrastructure operators across West Africa.',
     products: [
       'Protection relays and IEDs',
       'Switchgear — LV, MV and HV',
@@ -47,7 +50,7 @@ const SECTORS = [
   {
     slug: 'automation-control-systems',
     image: '/sectors/automation.jpg',
-    title: 'Automation and Control Systems',
+    title: 'Automation & Control Systems',
     desc: 'We source industrial automation and control equipment from European manufacturers to support process industries, manufacturing facilities and infrastructure operators in Nigeria and West Africa. Our solutions cover everything from individual PLC components to complete SCADA and control system integration.',
     products: [
       'Programmable Logic Controllers (PLCs)',
@@ -63,9 +66,27 @@ const SECTORS = [
     ],
   },
   {
+    slug: 'instrumentation-metering-systems',
+    image: '/sectors/instrumentation-metering.jpg',
+    title: 'Instrumentation & Metering Systems',
+    desc: 'We source precision instrumentation and metering equipment from certified European manufacturers for use across oil and gas, utilities, water treatment and industrial facilities. Our solutions ensure accurate measurement, process control and regulatory compliance.',
+    products: [
+      'Flow measurement instruments — ultrasonic, magnetic, Coriolis',
+      'Level measurement systems — radar, ultrasonic, guided wave',
+      'Pressure and differential pressure transmitters',
+      'Temperature sensors and transmitters — RTDs and thermocouples',
+      'Gas and liquid analysers',
+      'Energy and utility meters',
+      'Custody transfer metering systems',
+      'Multi-variable transmitters',
+      'Calibration equipment and standards',
+      'Data loggers and remote monitoring units',
+    ],
+  },
+  {
     slug: 'construction-infrastructure',
     image: '/sectors/construction.jpg',
-    title: 'Construction and Infrastructure',
+    title: 'Construction & Infrastructure',
     desc: 'We supply high-quality equipment and materials to support civil, structural and infrastructure projects across Nigeria and West Africa. Our procurement covers both electrical and mechanical equipment needed at various stages of construction and commissioning.',
     products: [
       'Generators and power distribution equipment',
@@ -81,13 +102,48 @@ const SECTORS = [
     ],
   },
   {
-    slug: 'mining-heavy-engineering',
-    image: '/sectors/mining.jpg',
-    title: 'Mining and Heavy Engineering',
-    desc: 'We supply robust European equipment for mining operations, quarrying, and heavy engineering projects. Our sourcing covers equipment for exploration, extraction, processing and safety — built to withstand demanding environments and operating conditions.',
+    slug: 'manufacturing-heavy-industry',
+    image: '/sectors/manufacturing-heavy-industry.jpg',
+    title: 'Manufacturing & Heavy Industry',
+    desc: 'We supply European industrial equipment to manufacturing plants, processing facilities and heavy industry operators across Nigeria and West Africa. Our sourcing supports the full production lifecycle — from raw material processing through to finished goods output.',
     products: [
-      'NDT equipment — ultrasonic, radiographic and magnetic',
-      'Structural inspection tools',
+      'Industrial motors and drives',
+      'Conveyor and material handling systems',
+      'Hydraulic and pneumatic equipment',
+      'Industrial compressors and blowers',
+      'Heat exchangers and process vessels',
+      'Welding and fabrication equipment',
+      'Condition monitoring and vibration analysis tools',
+      'Factory automation components',
+      'Industrial filtration systems',
+      'Safety systems and interlocks',
+    ],
+  },
+  {
+    slug: 'telecommunications',
+    image: '/sectors/telecommunications.jpg',
+    title: 'Telecommunications',
+    desc: 'We source and supply European telecommunications equipment and infrastructure components to telecom operators, ISPs and enterprise clients across Nigeria and West Africa. Our procurement covers both active and passive network equipment from certified European manufacturers.',
+    products: [
+      'Fibre optic cables and accessories',
+      'Network switching and routing equipment',
+      'Base station and antenna systems',
+      'Power systems for telecom — rectifiers, batteries and UPS',
+      'Tower and mast structures',
+      'Cable management and containment systems',
+      'Microwave and RF transmission equipment',
+      'Network monitoring and management systems',
+      'Structured cabling solutions',
+      'Earthing and surge protection systems',
+    ],
+  },
+  {
+    slug: 'mining-extractives',
+    image: '/sectors/mining-extractives.png',
+    title: 'Mining & Extractives',
+    desc: 'We supply robust European equipment for mining operations, quarrying, and extractive industry projects. Our sourcing covers equipment for exploration, extraction, processing and safety — built to withstand demanding environments and harsh operating conditions.',
+    products: [
+      'NDT equipment — ultrasonic, radiographic and magnetic particle',
       'Explosive atmosphere (ATEX) certified equipment',
       'Heavy-duty electrical cables and connectors',
       'Motor control and variable speed drives',
@@ -96,6 +152,25 @@ const SECTORS = [
       'Conveyor and material handling instrumentation',
       'Condition monitoring and vibration analysis tools',
       'Safety and gas detection systems',
+      'Structural inspection and monitoring tools',
+    ],
+  },
+  {
+    slug: 'healthcare-pharmaceuticals',
+    image: '/sectors/healthcare-pharmaceuticals.jpg',
+    title: 'Healthcare & Pharmaceuticals',
+    desc: 'We source and supply certified European medical and pharmaceutical equipment to hospitals, clinics, laboratories and pharmaceutical manufacturers across Nigeria and West Africa. Our procurement ensures full traceability, regulatory compliance and original manufacturer certification.',
+    products: [
+      'Laboratory analysis and diagnostic equipment',
+      'Medical imaging and diagnostic systems',
+      'Hospital infrastructure and facility equipment',
+      'Cold chain and pharmaceutical refrigeration systems',
+      'Sterilisation and infection control equipment',
+      'Pharmaceutical manufacturing and packaging machinery',
+      'Water purification systems for pharmaceutical use',
+      'Air handling and cleanroom systems',
+      'Medical gas pipeline systems',
+      'Patient monitoring and ICU equipment',
     ],
   },
   {
@@ -118,7 +193,19 @@ const SECTORS = [
   },
 ];
 
-export default function SectorsPage() {
+export default async function SectorsPage() {
+  const strapiSectors = await getSectors();
+
+  const sectors = strapiSectors.length > 0
+    ? strapiSectors.map((s, i) => ({
+        slug: s.slug,
+        image: s.image ? getStrapiMediaUrl(s.image.url) : SECTORS[i]?.image || '/sectors/oil-gas.jpg',
+        title: s.title,
+        desc: s.description || '',
+        products: Array.isArray(s.products) ? s.products : [],
+      }))
+    : SECTORS;
+
   return (
     <>
       <style>{`
@@ -183,7 +270,7 @@ export default function SectorsPage() {
       {/* Sectors List */}
       <div className="container">
         <div className="sectors-list">
-          {SECTORS.map((sector, i) => (
+          {sectors.map((sector, i) => (
             <div key={sector.slug} id={sector.slug} className="sector-item fade-up">
               <div className="sector-item-left">
                 {/* eslint-disable-next-line @next/next/no-img-element */}

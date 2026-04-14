@@ -49,8 +49,8 @@ export default async function AboutPage() {
   const displayTeam: any[] = team.length > 0 ? team : MOCK_TEAM;
 
   const aboutPage = await getAboutPage();
-  const dynamicMission = aboutPage?.mission || 'To bridge the gap between European excellence and African opportunity by delivering premium products, technical expertise and reliable trade solutions to Nigeria and West African markets.';
-  const dynamicVision = aboutPage?.vision || 'To become West Africa\'s trusted gateway to European industrial solutions and strategic partnerships.';
+  const dynamicMission = aboutPage?.mission || 'To bridge the gap between European excellence and global opportunity; delivering premium products, technical expertise and reliable trade solutions to West African and international markets.';
+  const dynamicVision = aboutPage?.vision || 'To become the most trusted gateway connecting global businesses with European and American industrial solutions.';
 
   return (
     <>

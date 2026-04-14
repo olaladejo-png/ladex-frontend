@@ -20,12 +20,16 @@ const WHY_US = [
 ];
 
 const SECTORS = [
-  { slug: 'oil-and-gas', icon: 'droplet', image: '/sectors/oil-gas.jpg', title: 'Oil and Gas', desc: 'Supplying instrumentation, valves, safety and process equipment to upstream and downstream oil & gas operations.' },
-  { slug: 'power-electrical-instrumentation', icon: 'settings', image: '/sectors/power-electrical.jpg', title: 'Power, Electrical & Instrumentation', desc: 'Protection relays, switchgear, power analysers, substation equipment and cables from leading European manufacturers.' },
-  { slug: 'automation-control-systems', icon: 'box', image: '/sectors/automation.jpg', title: 'Automation and Control Systems', desc: 'Industrial PLC components, SCADA systems and automation equipment for process control and efficiency.' },
-  { slug: 'construction-infrastructure', icon: 'landmark', image: '/sectors/construction.jpg', title: 'Construction and Infrastructure', desc: 'High-grade equipment for civil, structural and infrastructure projects across West Africa.' },
-  { slug: 'mining-heavy-engineering', icon: 'truck', image: '/sectors/mining.jpg', title: 'Mining and Heavy Engineering', desc: 'Robust equipment and NDT/structural inspection tools for mining and heavy industrial operations.' },
-  { slug: 'agriculture-agro-processing', icon: 'wheat', image: '/sectors/agriculture.jpg', title: 'Agriculture and Agro-processing', desc: 'Hatching eggs from certified European hatcheries, agricultural equipment and processing systems.' },
+  { slug: 'oil-and-gas', image: '/sectors/oil-gas.jpg', title: 'Oil & Gas', desc: 'Instrumentation, valves, safety and process equipment for upstream and downstream oil & gas operations.' },
+  { slug: 'power-electrical-systems', image: '/sectors/power-electrical.jpg', title: 'Power & Electrical Systems', desc: 'Protection relays, switchgear, power analysers, substation equipment and cables from leading European manufacturers.' },
+  { slug: 'automation-control-systems', image: '/sectors/automation.jpg', title: 'Automation & Control Systems', desc: 'PLCs, SCADA systems and automation equipment for process industries and manufacturing facilities.' },
+  { slug: 'instrumentation-metering-systems', image: '/sectors/instrumentation-metering.jpg', title: 'Instrumentation & Metering Systems', desc: 'Precision flow, level, pressure and temperature instruments for accurate measurement and process control.' },
+  { slug: 'construction-infrastructure', image: '/sectors/construction.jpg', title: 'Construction & Infrastructure', desc: 'High-grade equipment for civil, structural and infrastructure projects across West Africa.' },
+  { slug: 'manufacturing-heavy-industry', image: '/sectors/manufacturing-heavy-industry.jpg', title: 'Manufacturing & Heavy Industry', desc: 'Industrial motors, drives, conveyors and process equipment for manufacturing plants and heavy industry.' },
+  { slug: 'telecommunications', image: '/sectors/telecommunications.jpg', title: 'Telecommunications', desc: 'Fibre optic cables, network infrastructure, power systems and passive components for telecom operators.' },
+  { slug: 'mining-extractives', image: '/sectors/mining-extractives.png', title: 'Mining & Extractives', desc: 'Robust European equipment for mining, quarrying and extractive industry operations in demanding environments.' },
+  { slug: 'healthcare-pharmaceuticals', image: '/sectors/healthcare-pharmaceuticals.jpg', title: 'Healthcare & Pharmaceuticals', desc: 'Certified European medical, laboratory and pharmaceutical equipment with full manufacturer documentation.' },
+  { slug: 'agriculture-agro-processing', image: '/sectors/agriculture.jpg', title: 'Agriculture & Agro-processing', desc: 'Hatching eggs from certified European hatcheries, agricultural equipment and agro-processing systems.' },
 ];
 
 
@@ -39,8 +43,8 @@ export default async function HomePage() {
   const carousels = await getCarousels();
 
   const aboutPage = await getAboutPage();
-  const dynamicMission = aboutPage?.mission || 'To bridge the gap between European excellence and African opportunity by delivering premium products, technical expertise and reliable trade solutions to Nigeria and West African markets.';
-  const dynamicVision = aboutPage?.vision || 'To become West Africa\'s trusted gateway to European industrial solutions and strategic partnerships — setting the benchmark for quality and reliability.';
+  const dynamicMission = aboutPage?.mission || 'To bridge the gap between European excellence and global opportunity; delivering premium products, technical expertise and reliable trade solutions to West African and international markets.';
+  const dynamicVision = aboutPage?.vision || 'To become the most trusted gateway connecting global businesses with European and American industrial solutions.';
 
   return (
     <>
