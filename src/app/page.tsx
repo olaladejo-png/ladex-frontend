@@ -236,9 +236,9 @@ export default async function HomePage() {
           <div className="about-content-panel fade-up stagger-1">
             <p className="section-eyebrow">Who We Are</p>
             <div className="about-line" />
-            <h2>Rooted in Engineering. Built for Trade.</h2>
-            <p>Ladex Group is a Germany-based procurement and export company supplying high-quality equipment and solutions from leading European manufacturers to Africa and other international markets.</p>
-            <p>With operations in Germany and Nigeria, we combine direct access to European supply chains with on-ground technical support and delivery coordination globally.</p>
+            <h2>Germany-Based. Global Procurement.</h2>
+            <p>Ladex Group is a Germany-based procurement and supply company specializing in sourcing high-quality electrical, automation, and industrial equipment from leading European manufacturers. With operations in Germany and Nigeria, we combine direct access to Europe&apos;s manufacturing eco-system with on-ground technical support and delivery coordination across Africa and other international markets.</p>
+            <p>From our base in Bavaria, Germany, the heart of Europe&apos;s industrial network, we provide reliable sourcing, efficient logistics, and trusted supply solutions to our clients globally.</p>
             <div style={{ marginTop: '2rem' }}>
               <Link href="/about" className="btn btn-dark">Learn More About Us →</Link>
             </div>
