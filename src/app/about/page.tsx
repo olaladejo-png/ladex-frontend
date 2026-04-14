@@ -30,14 +30,14 @@ const MOCK_TEAM = [
   {
     name: 'Lekan Ladejo',
     role: 'Founder & Chairman',
-    bio: 'Engr. Lekan Ladejo has over 30 years of engineering experience in Nigeria. He provides strategic leadership, market direction, and senior client engagement.',
+    bio: 'Engr. Lekan Ladejo has over 30 years of engineering experience in Nigeria\'s construction sector. He provides strategic leadership, market direction, and senior-level client engagement, guiding the company\'s growth and long-term partnerships across Nigeria and West Africa.',
     flag: '🇳🇬',
     location: 'Nigeria',
   },
   {
     name: 'Iyiola Ladejo',
-    role: 'Director, European Operations',
-    bio: 'Mr. Iyiola Ladejo holds an MSc in Electrical Engineering from Grenoble INP – Ense3, France. Based in Munich Area, Germany, he oversees European procurement, supplier relations, export logistics, and international business development.',
+    role: 'Executive Director',
+    bio: 'Mr. Iyiola Ladejo holds an MSc in Electrical Engineering from Grenoble INP – Ense3, France.',
     flag: '🇩🇪',
     location: 'Munich Area, Germany',
   },
