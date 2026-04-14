@@ -34,9 +34,9 @@ const SECTORS = [
 
 
 const HOW_IT_WORKS = [
-  { num: '01', title: 'Tell us what you need', desc: 'Share your requirement, specification, and timeline.' },
-  { num: '02', title: 'We source and quote', desc: 'We identify the best supplier and provide a competitive quotation.' },
-  { num: '03', title: 'We deliver', desc: 'We manage procurement, documentation, and shipping to your destination.' },
+  { num: '01', title: 'Tell us what you need', desc: 'Share your requirement, specification, quantity and delivery timeline.' },
+  { num: '02', title: 'We source and quote', desc: 'We identify the best European supplier and provide a competitive quotation.' },
+  { num: '03', title: 'We deliver', desc: 'We manage procurement, export documentation, and shipping to your destination.' },
 ];
 
 export default async function HomePage() {
