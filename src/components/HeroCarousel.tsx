@@ -12,7 +12,7 @@ const HERO_IMAGES = [
   { src: '/hero/hero_carousel_4.jpg', credit: 'Ladex Group — Instrumentation & Control' },
 ];
 
-export default function HeroCarousel({ slides }: { slides: Carousel[] }) {
+export default function HeroCarousel({ slides, tagline }: { slides: Carousel[]; tagline?: string }) {
   const [current, setCurrent] = useState(0);
 
   const displaySlides = slides.length > 0 ? slides : [
@@ -210,7 +210,7 @@ export default function HeroCarousel({ slides }: { slides: Carousel[] }) {
             <div className="hero-overlay" />
             
             <div className="hero-content">
-              <div className="hero-eyebrow">Quality Without Compromise. Europe to the World.</div>
+              <div className="hero-eyebrow">{tagline || 'Quality Without Compromise. Europe to the World.'}</div>
               {titlePart2 ? (
                   <h1 className="hero-title">{titlePart1}<br/><span>{titlePart2}</span></h1>
               ) : (

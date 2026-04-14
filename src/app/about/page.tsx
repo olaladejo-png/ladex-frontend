@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Icon, { IconName } from '@/components/Icon';
-import { getTeamMembers, getAboutPage, getStrapiMediaUrl } from '@/lib/api';
+import { getTeamMembers, getAboutPage, getGlobalSettings, getStrapiMediaUrl } from '@/lib/api';
 
 export const metadata: Metadata = {
   title: 'About Ladex Group – Germany-Based, Africa-Focused',
@@ -10,14 +10,14 @@ export const metadata: Metadata = {
 };
 export const revalidate = 60;
 
-const VALUES: { icon: IconName; title: string; desc: string }[] = [
+const VALUES_FALLBACK: { icon: IconName; title: string; desc: string }[] = [
   { icon: 'shield', title: 'Integrity', desc: 'Genuine products always' },
   { icon: 'gem', title: 'Excellence', desc: 'Engineering precision in everything' },
   { icon: 'clock', title: 'Reliability', desc: 'Delivering on every promise' },
   { icon: 'handshake', title: 'Partnership', desc: 'Growing together with our clients' },
 ];
 
-const OBJECTIVES: { icon: IconName; text: string }[] = [
+const OBJECTIVES_FALLBACK: { icon: IconName; text: string }[] = [
   { icon: 'globe', text: 'Supply genuine European equipment directly to industrial clients in Nigeria and West Africa.' },
   { icon: 'trending-up', text: 'Bridge the gap between European manufacturers and African procurement teams.' },
   { icon: 'wrench', text: 'Provide end-to-end technical support from specification through commissioning.' },
@@ -44,13 +44,28 @@ const MOCK_TEAM = [
 ];
 
 export default async function AboutPage() {
-  const team = await getTeamMembers();
+  const [team, aboutPage, settings] = await Promise.all([
+    getTeamMembers(),
+    getAboutPage(),
+    getGlobalSettings(),
+  ]);
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const displayTeam: any[] = team.length > 0 ? team : MOCK_TEAM;
 
-  const aboutPage = await getAboutPage();
   const dynamicMission = aboutPage?.mission || 'To bridge the gap between European excellence and global opportunity; delivering premium products, technical expertise and reliable trade solutions to West African and international markets.';
   const dynamicVision = aboutPage?.vision || 'To become the most trusted gateway connecting global businesses with European and American industrial solutions.';
+
+  const values = (aboutPage?.values && aboutPage.values.length > 0)
+    ? aboutPage.values.map(v => ({ icon: (v.icon || 'shield') as IconName, title: v.title || '', desc: v.description || '' }))
+    : VALUES_FALLBACK;
+
+  const objectives = (aboutPage?.objectives_list && aboutPage.objectives_list.length > 0)
+    ? aboutPage.objectives_list.map(o => ({ icon: (o.icon || 'globe') as IconName, text: o.description || '' }))
+    : OBJECTIVES_FALLBACK;
+
+  const ctaHeading = settings?.about_cta_heading || 'Ready to Source European Equipment?';
+  const ctaBody = settings?.about_cta_body || 'Share your requirement and specification. Our team will identify the right European supplier and manage the entire procurement process for you.';
 
   return (
     <>
@@ -160,7 +175,7 @@ export default async function AboutPage() {
           <p className="section-eyebrow">Principles</p>
           <h2 className="section-title">Core Values</h2>
           <div className="values-grid fade-up stagger-1">
-            {VALUES.map((v) => (
+            {values.map((v) => (
               <div key={v.title} className="value-card">
                 <div style={{ color: 'var(--ladex-gold)', display: 'flex', justifyContent: 'center' }}>
                   <Icon name={v.icon} size={40} />
@@ -216,9 +231,9 @@ export default async function AboutPage() {
       <div style={{ background: 'var(--ladex-black)', padding: '5rem 0' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2.5rem' }}>
           <div style={{ maxWidth: '580px' }}>
-            <h2 style={{ color: '#fff', marginBottom: '1rem', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>Ready to Source European Equipment?</h2>
+            <h2 style={{ color: '#fff', marginBottom: '1rem', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>{ctaHeading}</h2>
             <p style={{ color: 'rgba(255,255,255,.5)', margin: 0, fontSize: '1.05rem', lineHeight: 1.8 }}>
-              Share your requirement and specification. Our team will identify the right European supplier and manage the entire procurement process for you.
+              {ctaBody}
             </p>
           </div>
           <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>

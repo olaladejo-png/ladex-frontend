@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getGlobalSettings } from '@/lib/api';
 
 export const metadata: Metadata = {
   title: 'Our Services | Ladex Group – Equipment Sourcing, Technical Representation & More',
@@ -82,6 +83,10 @@ const SERVICES = [
 ];
 
 export default async function ServicesPage() {
+  const settings = await getGlobalSettings();
+  const ctaHeading = settings?.services_cta_heading || 'Have a Specific Requirement?';
+  const ctaBody = settings?.services_cta_body || 'Contact us with your specification. We will identify the right supplier and provide a competitive quotation.';
+
   return (
     <>
       <style>{`
@@ -219,9 +224,9 @@ export default async function ServicesPage() {
       <div style={{ background: 'var(--ladex-black)', padding: '5rem 0' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2.5rem' }}>
           <div style={{ maxWidth: '580px' }}>
-            <h2 style={{ color: '#fff', marginBottom: '1rem', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>Have a Specific Requirement?</h2>
+            <h2 style={{ color: '#fff', marginBottom: '1rem', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>{ctaHeading}</h2>
             <p style={{ color: 'rgba(255,255,255,.5)', margin: 0, fontSize: '1.05rem', lineHeight: 1.8 }}>
-              Contact us with your specification. We will identify the right supplier and provide a competitive quotation.
+              {ctaBody}
             </p>
           </div>
           <Link href="/contact" className="btn btn-primary btn-lg">Get a Quote</Link>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroCarousel from '@/components/HeroCarousel';
-import { getCarousels, getAboutPage } from '@/lib/api';
+import { getCarousels, getAboutPage, getGlobalSettings } from '@/lib/api';
 import Icon, { IconName } from '@/components/Icon';
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 export const revalidate = 60;
 
-const WHY_US = [
+const WHY_US_FALLBACK = [
   { icon: 'globe', title: 'Germany Based', desc: 'Direct access to European manufacturers and distribution networks' },
   { icon: 'graduation-cap', title: 'Technically Qualified', desc: 'MSc in Electrical Engineering' },
   { icon: 'map-pin', title: 'Nigeria Presence', desc: 'Operations in Ibadan and Lagos' },
@@ -33,18 +33,50 @@ const SECTORS = [
 ];
 
 
-const HOW_IT_WORKS = [
+const HOW_IT_WORKS_FALLBACK = [
   { num: '01', title: 'Tell us what you need', desc: 'Share your requirement, specification, quantity and delivery timeline.' },
   { num: '02', title: 'We source and quote', desc: 'We identify the best European supplier and provide a competitive quotation.' },
   { num: '03', title: 'We deliver', desc: 'We manage procurement, export documentation, and shipping to your destination.' },
 ];
 
-export default async function HomePage() {
-  const carousels = await getCarousels();
+const BRANDS_FALLBACK = [
+  'ABB','Beckhoff','Danfoss','Eaton','Endress+Hauser','Festo','Fluke',
+  'Fronius','Hager','Janitza','Lapp Group','Legrand','Megger','OMICRON',
+  'Pepperl+Fuchs','Phoenix Contact','Pilz','Rittal','Schneider Electric',
+  'Screening Eagle Technologies','Siemens','SKF','SMA Solar','WAGO',
+];
 
-  const aboutPage = await getAboutPage();
+export default async function HomePage() {
+  const [carousels, aboutPage, settings] = await Promise.all([
+    getCarousels(),
+    getAboutPage(),
+    getGlobalSettings(),
+  ]);
+
   const dynamicMission = aboutPage?.mission || 'To bridge the gap between European excellence and global opportunity; delivering premium products, technical expertise and reliable trade solutions to West African and international markets.';
   const dynamicVision = aboutPage?.vision || 'To become the most trusted gateway connecting global businesses with European and American industrial solutions.';
+
+  const tagline = settings?.homepage_tagline || 'Quality Without Compromise. Europe to the World.';
+  const intro1 = settings?.homepage_intro_1 || 'We supply high-quality European equipment and technical solutions for infrastructure and industrial projects worldwide, with a strong focus on Nigeria and West Africa.';
+  const intro2 = settings?.homepage_intro_2 || 'From sourcing to delivery, we provide reliable procurement, logistics coordination, and technical support for engineering-driven industries.';
+  const whoWeAreHeading = settings?.whoweare_heading || 'Germany-Based. Global Procurement.';
+  const whoWeAreBody1 = settings?.whoweare_body_1 || 'Ladex Group is a Germany-based procurement and supply company specializing in sourcing high-quality electrical, automation, and industrial equipment from leading European manufacturers. With operations in Germany and Nigeria, we combine direct access to Europe\u2019s manufacturing eco-system with on-ground technical support and delivery coordination across Africa and other international markets.';
+  const whoWeAreBody2 = settings?.whoweare_body_2 || 'From our base in Bavaria, Germany, the heart of Europe\u2019s industrial network, we provide reliable sourcing, efficient logistics, and trusted supply solutions to our clients globally.';
+  const ctaEyebrow = settings?.homepage_cta_eyebrow || 'Get Started';
+  const ctaHeading = settings?.homepage_cta_heading || 'Ready to Source European Equipment?';
+  const ctaBody = settings?.homepage_cta_body || 'Tell us your requirements, specification and timeline. We handle the rest \u2014 from supplier identification to delivery.';
+
+  const howItWorks = (settings?.how_it_works && settings.how_it_works.length > 0)
+    ? settings.how_it_works.map(s => ({ num: s.num || '', title: s.title, desc: s.description || '' }))
+    : HOW_IT_WORKS_FALLBACK;
+
+  const whyUs = (settings?.why_us && settings.why_us.length > 0)
+    ? settings.why_us.map(w => ({ icon: w.icon || 'globe', title: w.title || '', desc: w.description || '' }))
+    : WHY_US_FALLBACK;
+
+  const brands = settings?.brands_list
+    ? settings.brands_list.split(',').map(b => b.trim()).filter(Boolean)
+    : BRANDS_FALLBACK;
 
   return (
     <>
@@ -227,16 +259,16 @@ export default async function HomePage() {
       `}</style>
 
       {/* Hero */}
-      <HeroCarousel slides={carousels} />
+      <HeroCarousel slides={carousels} tagline={tagline} />
 
       {/* Intro Strip */}
       <div style={{ background: '#fff', borderBottom: '1px solid var(--border)', padding: '3.5rem 0' }}>
         <div className="container intro-grid">
           <p style={{ fontSize: '1.15rem', lineHeight: 1.8, color: 'var(--text-secondary)', fontWeight: 500, margin: 0 }}>
-            We supply high-quality European equipment and technical solutions for infrastructure and industrial projects worldwide, with a strong focus on Nigeria and West Africa.
+            {intro1}
           </p>
           <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'var(--text-muted)', margin: 0, borderLeft: '3px solid var(--ladex-gold)', paddingLeft: '1.75rem' }}>
-            From sourcing to delivery, we provide reliable procurement, logistics coordination, and technical support for engineering-driven industries.
+            {intro2}
           </p>
         </div>
       </div>
@@ -250,9 +282,9 @@ export default async function HomePage() {
           <div className="about-content-panel fade-up stagger-1">
             <p className="section-eyebrow">Who We Are</p>
             <div className="about-line" />
-            <h2>Germany-Based. Global Procurement.</h2>
-            <p>Ladex Group is a Germany-based procurement and supply company specializing in sourcing high-quality electrical, automation, and industrial equipment from leading European manufacturers. With operations in Germany and Nigeria, we combine direct access to Europe&apos;s manufacturing eco-system with on-ground technical support and delivery coordination across Africa and other international markets.</p>
-            <p>From our base in Bavaria, Germany, the heart of Europe&apos;s industrial network, we provide reliable sourcing, efficient logistics, and trusted supply solutions to our clients globally.</p>
+            <h2>{whoWeAreHeading}</h2>
+            <p>{whoWeAreBody1}</p>
+            <p>{whoWeAreBody2}</p>
             <div style={{ marginTop: '2rem' }}>
               <Link href="/about" className="btn btn-dark">Learn More About Us →</Link>
             </div>
@@ -311,7 +343,7 @@ export default async function HomePage() {
           <h2 className="section-title">The Ladex Advantage</h2>
           <p className="section-lead">Five reasons why leading organisations across Nigeria and West Africa trust Ladex Group.</p>
           <div className="why-grid">
-            {WHY_US.map((w) => (
+            {whyUs.map((w) => (
               <div key={w.title} className="why-card">
                 <div style={{ color: 'var(--ladex-gold)' }}><Icon name={w.icon as IconName} size={40} /></div>
                 <h3>{w.title}</h3>
@@ -328,7 +360,7 @@ export default async function HomePage() {
           <p className="section-eyebrow fade-up" style={{ color: 'var(--ladex-gold)' }}>Process</p>
           <h2 className="fade-up stagger-1" style={{ color: '#fff', fontSize: 'clamp(2rem, 4vw, 3rem)' }}>How It Works</h2>
           <div className="how-grid fade-up stagger-2">
-            {HOW_IT_WORKS.map((s) => (
+            {howItWorks.map((s) => (
               <div key={s.num} className="how-step">
                 <div className="how-num">{s.num}</div>
                 <div className="how-title">{s.title}</div>
@@ -349,12 +381,6 @@ export default async function HomePage() {
         </div>
         <div className="brands-ticker-wrap">
           {(() => {
-            const brands = [
-              'ABB','Beckhoff','Danfoss','Eaton','Endress+Hauser','Festo','Fluke',
-              'Fronius','Hager','Janitza','Lapp Group','Legrand','Megger','OMICRON',
-              'Pepperl+Fuchs','Phoenix Contact','Pilz','Rittal','Schneider Electric',
-              'Screening Eagle Technologies','Siemens','SKF','SMA Solar','WAGO',
-            ];
             const pills = brands.map(b => <span key={b} className="brand-pill">{b}</span>);
             return (
               <div className="brands-ticker">
@@ -370,9 +396,9 @@ export default async function HomePage() {
       <div className="cta-full">
         <div className="container">
           <div className="cta-full-inner">
-            <p className="section-eyebrow" style={{ color: 'var(--ladex-gold)' }}>Get Started</p>
-            <h2>Ready to Source European Equipment?</h2>
-            <p>Tell us your requirements, specification and timeline. We handle the rest — from supplier identification to delivery.</p>
+            <p className="section-eyebrow" style={{ color: 'var(--ladex-gold)' }}>{ctaEyebrow}</p>
+            <h2>{ctaHeading}</h2>
+            <p>{ctaBody}</p>
             <div className="cta-full-actions">
               <Link href="/contact" className="btn btn-primary btn-lg">Get a Quote</Link>
               <Link href="/services" className="btn btn-outline-white btn-lg">Our Services →</Link>
