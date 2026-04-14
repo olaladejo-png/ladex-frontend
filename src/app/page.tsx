@@ -372,7 +372,7 @@ export default async function HomePage() {
           <div className="cta-full-inner">
             <p className="section-eyebrow" style={{ color: 'var(--ladex-gold)' }}>Get Started</p>
             <h2>Ready to Source European Equipment?</h2>
-            <p>Tell us your requirement, specification and timeline. We handle the rest — from supplier identification to delivery in Nigeria and West Africa.</p>
+            <p>Tell us your requirements, specification and timeline. We handle the rest — from supplier identification to delivery.</p>
             <div className="cta-full-actions">
               <Link href="/contact" className="btn btn-primary btn-lg">Get a Quote</Link>
               <Link href="/services" className="btn btn-outline-white btn-lg">Our Services →</Link>
