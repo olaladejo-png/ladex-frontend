@@ -53,7 +53,7 @@ export default async function RootLayout({
   const email = settings?.contact_email || "sales@ladexgroup.com";
   const rawWa = settings?.contact_phone || "+49 1521 816 2816";
   const whatsappUrl = `https://wa.me/${rawWa.replace(/\D/g, '')}`;
-  const linkedinUrl = settings?.linkedin_url || "https://linkedin.com/in/iyiola-ladejo";
+  const linkedinUrl = settings?.linkedin_url || "http://linkedin.com/in/iyiola-ladejo";
 
   return (
     <html lang="en">

@@ -117,7 +117,7 @@ export default async function AboutPage() {
 
       {/* Hero */}
       <div className="about-hero">
-        <Image src="/hero/hero_engineering.jpg" alt="Ladex Group operations" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.55 }} priority />
+        <Image src="/hero/hero_about.jpg" alt="Ladex Group operations" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.55 }} priority />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,10,0.95) 10%, rgba(10,10,10,0.65))', zIndex: 5 }} />
         <div className="about-hero-content">
           <div className="container">

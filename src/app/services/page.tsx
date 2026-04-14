@@ -141,7 +141,7 @@ export default async function ServicesPage() {
 
       {/* Hero */}
       <div className="service-hero">
-        <Image src="/hero/hero_logistics.jpg" alt="Ladex Group Services" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.5 }} priority />
+        <Image src="/hero/hero_services.jpg" alt="Ladex Group Services" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.5 }} priority />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.5) 100%)', zIndex: 5 }} />
         <div className="container service-hero-content">
           <nav className="breadcrumb" aria-label="Breadcrumb" style={{ marginBottom: '2rem' }}>

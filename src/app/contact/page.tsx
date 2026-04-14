@@ -108,7 +108,7 @@ export default async function ContactPage() {
 
       {/* Hero */}
       <div className="contact-hero">
-        <Image src="/hero/hero_power.jpg" alt="Ladex Group Contact" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.45 }} priority />
+        <Image src="/hero/hero_contact.jpg" alt="Ladex Group Contact" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.45 }} priority />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 100%)', zIndex: 5 }} />
         <div className="container contact-hero-content">
           <nav className="breadcrumb" aria-label="Breadcrumb" style={{ marginBottom: '2rem' }}>

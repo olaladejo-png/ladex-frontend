@@ -167,7 +167,7 @@ export default function SectorsPage() {
 
       {/* Hero */}
       <div className="sectors-hero">
-        <Image src="/hero/hero_engineering.jpg" alt="Sectors We Serve" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.45 }} priority />
+        <Image src="/hero/hero_sectors.jpg" alt="Sectors We Serve" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.45 }} priority />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.5) 100%)', zIndex: 5 }} />
         <div className="container sectors-hero-content">
           <nav className="breadcrumb" aria-label="Breadcrumb" style={{ marginBottom: '2rem' }}>

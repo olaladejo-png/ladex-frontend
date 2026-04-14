@@ -6,10 +6,10 @@ import type { Carousel } from '@/lib/api';
 import { getStrapiMediaUrl } from '@/lib/api';
 
 const HERO_IMAGES = [
-  { src: '/hero/hero_logistics.jpg', credit: 'Ladex Group — Global Logistics Hub' },
-  { src: '/hero/hero_engineering.jpg', credit: 'Ladex Group — Technical Engineering' },
-  { src: '/hero/hero_power.jpg', credit: 'Ladex Group — Power & Distribution' },
-  { src: '/hero/hero_construction.jpg', credit: 'Ladex Group — Heavy Infrastructure' },
+  { src: '/hero/hero_carousel_1.jpg', credit: 'Ladex Group — Oil & Gas Operations' },
+  { src: '/hero/hero_carousel_2.png', credit: 'Ladex Group — Mining & Heavy Engineering' },
+  { src: '/hero/hero_carousel_3.png', credit: 'Ladex Group — Manufacturing & Industry' },
+  { src: '/hero/hero_carousel_4.jpg', credit: 'Ladex Group — Instrumentation & Control' },
 ];
 
 export default function HeroCarousel({ slides }: { slides: Carousel[] }) {
