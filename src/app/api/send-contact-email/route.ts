@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = 'sales@ladexgroup.com';
 const FROM_EMAIL = 'website@ladexgroup.com';
 
 export async function POST(req: Request) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { full_name, email, phone, service, subject, message } = await req.json();
 
     await resend.emails.send({
