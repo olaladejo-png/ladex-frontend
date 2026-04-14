@@ -177,6 +177,22 @@ export default async function HomePage() {
         .partner-logo-hm { filter: grayscale(100%) contrast(150%) brightness(50%); transition: all 0.3s; display: flex; align-items: center; justify-content: center; padding: 0 5rem; flex-shrink: 0; }
         .partner-logo-hm:hover { filter: grayscale(0%); transform: scale(1.08); }
 
+        /* Brands */
+        .brands-section { padding: 5rem 0; background: var(--ladex-black); border-top: 1px solid rgba(255,255,255,0.06); }
+        .brands-header { text-align: center; margin-bottom: 3rem; }
+        .brands-header p { font-size: 0.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ladex-gold); margin-bottom: 0.75rem; }
+        .brands-header h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); color: #fff; font-weight: 800; margin: 0; }
+        .brands-ticker-wrap { overflow: hidden; position: relative; }
+        .brands-ticker-wrap::before, .brands-ticker-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+        .brands-ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--ladex-black), transparent); }
+        .brands-ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--ladex-black), transparent); }
+        .brands-ticker { display: flex; width: max-content; animation: brandScroll 35s linear infinite; }
+        .brands-ticker:hover { animation-play-state: paused; }
+        @keyframes brandScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .brand-pill { display: inline-flex; align-items: center; padding: 0.6rem 1.75rem; margin: 0 0.5rem; border: 1px solid rgba(201,162,39,0.2); border-radius: 2rem; white-space: nowrap; font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.02em; transition: all 0.3s; cursor: default; }
+        .brand-pill:hover { color: var(--ladex-gold); border-color: var(--ladex-gold); background: rgba(201,162,39,0.06); }
+        .brands-note { text-align: center; margin-top: 2rem; font-size: 0.85rem; color: var(--text-muted); }
+
         /* CTA */
         .cta-full { position: relative; overflow: hidden; background: var(--ladex-black); padding: 7rem 0; }
         .cta-full::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; background: rgba(201,162,39,0.06); top: -250px; right: -150px; pointer-events: none; }
@@ -310,6 +326,31 @@ export default async function HomePage() {
       </div>
 
 
+
+      {/* Brands */}
+      <div className="brands-section">
+        <div className="brands-header">
+          <p>Trusted Manufacturers</p>
+          <h2>Brands We Source</h2>
+        </div>
+        <div className="brands-ticker-wrap">
+          {(() => {
+            const brands = [
+              'ABB','Beckhoff','Danfoss','Eaton','Endress+Hauser','Festo','Fluke',
+              'Fronius','Hager','Janitza','Lapp Group','Legrand','Megger','OMICRON',
+              'Pepperl+Fuchs','Phoenix Contact','Pilz','Rittal','Schneider Electric',
+              'Screening Eagle Technologies','Siemens','SKF','SMA Solar','WAGO',
+            ];
+            const pills = brands.map(b => <span key={b} className="brand-pill">{b}</span>);
+            return (
+              <div className="brands-ticker">
+                {pills}{pills}
+              </div>
+            );
+          })()}
+        </div>
+        <p className="brands-note">…and many more leading European and American manufacturers.</p>
+      </div>
 
       {/* CTA */}
       <div className="cta-full">
