@@ -154,8 +154,8 @@ export default async function ServicesPage() {
             <span className="breadcrumb-sep" style={{ color: 'rgba(255,255,255,.2)' }}>›</span>
             <span style={{ color: '#fff' }}>Services</span>
           </nav>
-          <h1>Our Services</h1>
-          <p>From equipment sourcing and technical representation to full project support — we manage the entire process from European suppliers to your destination.</p>
+          <h1>Ready to Source European Equipment?</h1>
+          <p>Tell us your requirements, specification and timeline. We handle the rest — from supplier identification to delivery.</p>
         </div>
       </div>
 
