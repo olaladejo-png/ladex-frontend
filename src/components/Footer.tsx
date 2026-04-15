@@ -110,7 +110,7 @@ export default function Footer({ settings }: FooterProps) {
                   <img src="/logo.png" alt="Ladex Group Logo" className="footer-logo-img" />
                 </div>
                 <p className="footer-brand-desc">
-                  Germany-based procurement and export company supplying high-quality European equipment and solutions to our clients globally.
+                  Germany-based procurement and export company supplying<br />high-quality European equipment and solutions to our clients globally.
                 </p>
                 <div className="footer-socials">
                   <a href={linkedin} target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="LinkedIn" title="LinkedIn">
