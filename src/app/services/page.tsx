@@ -5,7 +5,7 @@ import { getGlobalSettings } from '@/lib/api';
 
 export const metadata: Metadata = {
   title: 'Our Services | Ladex Group – Equipment Sourcing, Technical Representation & More',
-  description: 'Ladex Group provides equipment sourcing, technical representation, engineering consulting, inspection and agricultural solutions from Europe to Nigeria and West Africa.',
+  description: 'Ladex Group provides equipment sourcing, technical representation, engineering consulting, inspection and agricultural solutions from Europe to clients globally.',
 };
 
 const SERVICES = [
@@ -30,7 +30,7 @@ const SERVICES = [
     icon: 'handshake',
     image: '/pics/services/technical-representation.png',
     title: 'Technical Representation & Market Support',
-    desc: 'We act as a bridge between international manufacturers and African markets, supporting product positioning, technical engagement, and after-sales coordination.',
+    desc: 'We act as a bridge between international manufacturers and global markets, supporting product positioning, technical engagement, and after-sales coordination.',
     products: [
       'Product specification support',
       'Technical advisory and selection guidance',

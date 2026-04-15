@@ -18,7 +18,7 @@ export default function HeroCarousel({ slides, tagline }: { slides: Carousel[]; 
   const displaySlides = slides.length > 0 ? slides : [
     {
       id: 1, documentId: 'fallback-1',
-      title: 'European Excellence.\\nAfrican Opportunity.',
+      title: 'European Excellence.\\nGlobal Opportunity.',
       subtitle: 'Complete supply chain mastery — from advanced German engineering to precision delivery worldwide.',
       link_url: '/about', link_text: 'Discover Our Edge',
       order: 1, is_active: true, image: { id: 0, documentId: '', url: '' },

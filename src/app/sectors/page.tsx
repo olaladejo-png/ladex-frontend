@@ -6,8 +6,8 @@ import { getSectors, getStrapiMediaUrl } from '@/lib/api';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Sectors We Serve | Ladex Group – European Equipment for Nigeria & West Africa',
-  description: 'Ladex Group supplies European equipment across 10 critical sectors including Oil & Gas, Power, Automation, Telecommunications, Healthcare and Agriculture throughout Nigeria and West Africa.',
+  title: 'Sectors We Serve | Ladex Group – European Equipment Globally',
+  description: 'Ladex Group supplies European equipment across 10 critical sectors including Oil & Gas, Power, Automation, Telecommunications, Healthcare and Agriculture to clients globally.',
 };
 
 const SECTORS = [
@@ -15,7 +15,7 @@ const SECTORS = [
     slug: 'oil-and-gas',
     image: '/sectors/oil-gas.jpg',
     title: 'Oil & Gas',
-    desc: 'We supply instrumentation, safety, and process equipment to upstream and downstream oil and gas operations across Nigeria and West Africa. Our sourcing covers the full lifecycle of oil and gas projects — from exploration and drilling through to production, refining and distribution.',
+    desc: 'We supply instrumentation, safety, and process equipment to upstream and downstream oil and gas operations globally. Our sourcing covers the full lifecycle of oil and gas projects — from exploration and drilling through to production, refining and distribution.',
     products: [
       'Flow meters and level instruments',
       'Pressure and temperature transmitters',
@@ -33,7 +33,7 @@ const SECTORS = [
     slug: 'power-electrical-systems',
     image: '/sectors/power-electrical.jpg',
     title: 'Power & Electrical Systems',
-    desc: 'We source and supply a wide range of electrical equipment from leading European manufacturers. From power generation and distribution through to substation protection and power quality management, we serve utilities, industrial plants and infrastructure operators across West Africa.',
+    desc: 'We source and supply a wide range of electrical equipment from leading European manufacturers. From power generation and distribution through to substation protection and power quality management, we serve utilities, industrial plants and infrastructure operators globally.',
     products: [
       'Protection relays and IEDs',
       'Switchgear — LV, MV and HV',
@@ -51,7 +51,7 @@ const SECTORS = [
     slug: 'automation-control-systems',
     image: '/sectors/automation.jpg',
     title: 'Automation & Control Systems',
-    desc: 'We source industrial automation and control equipment from European manufacturers to support process industries, manufacturing facilities and infrastructure operators in Nigeria and West Africa. Our solutions cover everything from individual PLC components to complete SCADA and control system integration.',
+    desc: 'We source industrial automation and control equipment from European manufacturers to support process industries, manufacturing facilities and infrastructure operators globally. Our solutions cover everything from individual PLC components to complete SCADA and control system integration.',
     products: [
       'Programmable Logic Controllers (PLCs)',
       'SCADA systems and HMI panels',
@@ -87,7 +87,7 @@ const SECTORS = [
     slug: 'construction-infrastructure',
     image: '/sectors/construction.jpg',
     title: 'Construction & Infrastructure',
-    desc: 'We supply high-quality equipment and materials to support civil, structural and infrastructure projects across Nigeria and West Africa. Our procurement covers both electrical and mechanical equipment needed at various stages of construction and commissioning.',
+    desc: 'We supply high-quality equipment and materials to support civil, structural and infrastructure projects globally. Our procurement covers both electrical and mechanical equipment needed at various stages of construction and commissioning.',
     products: [
       'Generators and power distribution equipment',
       'Site lighting and temporary power systems',
@@ -105,7 +105,7 @@ const SECTORS = [
     slug: 'manufacturing-heavy-industry',
     image: '/sectors/manufacturing-heavy-industry.jpg',
     title: 'Manufacturing & Heavy Industry',
-    desc: 'We supply European industrial equipment to manufacturing plants, processing facilities and heavy industry operators across Nigeria and West Africa. Our sourcing supports the full production lifecycle — from raw material processing through to finished goods output.',
+    desc: 'We supply European industrial equipment to manufacturing plants, processing facilities and heavy industry operators globally. Our sourcing supports the full production lifecycle — from raw material processing through to finished goods output.',
     products: [
       'Industrial motors and drives',
       'Conveyor and material handling systems',
@@ -123,7 +123,7 @@ const SECTORS = [
     slug: 'telecommunications',
     image: '/sectors/telecommunications.jpg',
     title: 'Telecommunications',
-    desc: 'We source and supply European telecommunications equipment and infrastructure components to telecom operators, ISPs and enterprise clients across Nigeria and West Africa. Our procurement covers both active and passive network equipment from certified European manufacturers.',
+    desc: 'We source and supply European telecommunications equipment and infrastructure components to telecom operators, ISPs and enterprise clients globally. Our procurement covers both active and passive network equipment from certified European manufacturers.',
     products: [
       'Fibre optic cables and accessories',
       'Network switching and routing equipment',
@@ -159,7 +159,7 @@ const SECTORS = [
     slug: 'healthcare-pharmaceuticals',
     image: '/sectors/healthcare-pharmaceuticals.jpg',
     title: 'Healthcare & Pharmaceuticals',
-    desc: 'We source and supply certified European medical and pharmaceutical equipment to hospitals, clinics, laboratories and pharmaceutical manufacturers across Nigeria and West Africa. Our procurement ensures full traceability, regulatory compliance and original manufacturer certification.',
+    desc: 'We source and supply certified European medical and pharmaceutical equipment to hospitals, clinics, laboratories and pharmaceutical manufacturers globally. Our procurement ensures full traceability, regulatory compliance and original manufacturer certification.',
     products: [
       'Laboratory analysis and diagnostic equipment',
       'Medical imaging and diagnostic systems',
@@ -177,7 +177,7 @@ const SECTORS = [
     slug: 'agriculture-agro-processing',
     image: '/sectors/agriculture.jpg',
     title: 'Agriculture and Agro-processing',
-    desc: 'We facilitate the sourcing and delivery of agricultural inputs and processing equipment from certified European suppliers. Our agricultural solutions support poultry farming, crop processing and agro-industrial operations across Nigeria and West Africa.',
+    desc: 'We facilitate the sourcing and delivery of agricultural inputs and processing equipment from certified European suppliers. Our agricultural solutions support poultry farming, crop processing and agro-industrial operations globally.',
     products: [
       'Layers and broiler hatching eggs from certified European hatcheries',
       'Incubation and hatchery equipment',
@@ -263,7 +263,7 @@ export default async function SectorsPage() {
             <span style={{ color: '#fff' }}>Sectors</span>
           </nav>
           <h1>Sectors We Serve</h1>
-          <p>We supply European equipment and technical solutions across six critical industries throughout Nigeria and West Africa.</p>
+          <p>We supply European equipment and technical solutions across ten critical industries to clients globally.</p>
         </div>
       </div>
 

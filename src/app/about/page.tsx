@@ -6,7 +6,7 @@ import { getTeamMembers, getAboutPage, getGlobalSettings, getStrapiMediaUrl } fr
 
 export const metadata: Metadata = {
   title: 'About Ladex Group – Germany-Based, Africa-Focused',
-  description: 'Learn about Ladex Group — our history, management team, mission and commitment to supplying quality European equipment to Nigeria and West Africa.',
+  description: 'Learn about Ladex Group — our history, management team, mission and commitment to supplying quality European equipment globally.',
 };
 export const revalidate = 60;
 
@@ -18,12 +18,12 @@ const VALUES_FALLBACK: { icon: IconName; title: string; desc: string }[] = [
 ];
 
 const OBJECTIVES_FALLBACK: { icon: IconName; text: string }[] = [
-  { icon: 'globe', text: 'Supply genuine European equipment directly to industrial clients in Nigeria and West Africa.' },
-  { icon: 'trending-up', text: 'Bridge the gap between European manufacturers and African procurement teams.' },
+  { icon: 'globe', text: 'Supply genuine European equipment directly to industrial clients globally.' },
+  { icon: 'trending-up', text: 'Bridge the gap between European manufacturers and international procurement teams.' },
   { icon: 'wrench', text: 'Provide end-to-end technical support from specification through commissioning.' },
   { icon: 'truck', text: 'Manage export logistics, documentation and shipping to minimise lead times.' },
   { icon: 'shield', text: 'Ensure quality, compliance and accuracy through pre-shipment inspection.' },
-  { icon: 'landmark', text: 'Act as a trusted technical representative for European manufacturers in West Africa.' },
+  { icon: 'landmark', text: 'Act as a trusted technical representative for European manufacturers globally.' },
 ];
 
 const MOCK_TEAM = [
@@ -142,7 +142,7 @@ export default async function AboutPage() {
               <span style={{ color: '#fff' }}>About Us</span>
             </nav>
             <h1 className="fade-up">Germany-Based.<br />Africa-Focused.</h1>
-            <p className="fade-up stagger-1">Direct access to European supply chains combined with on-ground technical support and delivery coordination across Nigeria and West Africa.</p>
+            <p className="fade-up stagger-1">Direct access to European supply chains combined with on-ground technical support and delivery coordination globally.</p>
           </div>
         </div>
       </div>

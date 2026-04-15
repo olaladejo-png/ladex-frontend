@@ -24,7 +24,7 @@ const SECTORS = [
   { slug: 'power-electrical-systems', image: '/sectors/power-electrical.jpg', title: 'Power & Electrical Systems', desc: 'Protection relays, switchgear, power analysers, substation equipment and cables from leading European manufacturers.' },
   { slug: 'automation-control-systems', image: '/sectors/automation.jpg', title: 'Automation & Control Systems', desc: 'PLCs, SCADA systems and automation equipment for process industries and manufacturing facilities.' },
   { slug: 'instrumentation-metering-systems', image: '/sectors/instrumentation-metering.jpg', title: 'Instrumentation & Metering Systems', desc: 'Precision flow, level, pressure and temperature instruments for accurate measurement and process control.' },
-  { slug: 'construction-infrastructure', image: '/sectors/construction.jpg', title: 'Construction & Infrastructure', desc: 'High-grade equipment for civil, structural and infrastructure projects across West Africa.' },
+  { slug: 'construction-infrastructure', image: '/sectors/construction.jpg', title: 'Construction & Infrastructure', desc: 'High-grade equipment for civil, structural and infrastructure projects globally.' },
   { slug: 'manufacturing-heavy-industry', image: '/sectors/manufacturing-heavy-industry.jpg', title: 'Manufacturing & Heavy Industry', desc: 'Industrial motors, drives, conveyors and process equipment for manufacturing plants and heavy industry.' },
   { slug: 'telecommunications', image: '/sectors/telecommunications.jpg', title: 'Telecommunications', desc: 'Fibre optic cables, network infrastructure, power systems and passive components for telecom operators.' },
   { slug: 'mining-extractives', image: '/sectors/mining-extractives.png', title: 'Mining & Extractives', desc: 'Robust European equipment for mining, quarrying and extractive industry operations in demanding environments.' },
@@ -316,7 +316,7 @@ export default async function HomePage() {
         <div className="container">
           <p className="section-eyebrow">Industries</p>
           <h2 className="section-title">Sectors We Serve</h2>
-          <p className="section-lead">We supply equipment and solutions across a broad range of critical industries throughout Nigeria and West Africa.</p>
+          <p className="section-lead">We supply equipment and solutions across a broad range of critical industries to clients globally.</p>
           <div className="sectors-grid">
             {SECTORS.map((s) => (
               <Link key={s.title} href={`/sectors#${s.slug}`} className="sector-card">
