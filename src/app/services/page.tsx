@@ -84,8 +84,8 @@ const SERVICES = [
 
 export default async function ServicesPage() {
   const settings = await getGlobalSettings();
-  const ctaHeading = settings?.services_cta_heading || 'Have a Specific Requirement?';
-  const ctaBody = settings?.services_cta_body || 'Contact us with your specification. We will identify the right supplier and provide a competitive quotation.';
+  const ctaHeading = settings?.services_cta_heading || 'Ready to Source European Equipment?';
+  const ctaBody = settings?.services_cta_body || 'Tell us your requirements, specification and timeline. We handle the rest — from supplier identification to delivery.';
 
   return (
     <>
@@ -155,7 +155,7 @@ export default async function ServicesPage() {
             <span style={{ color: '#fff' }}>Services</span>
           </nav>
           <h1>Our Services</h1>
-          <p>From equipment sourcing and technical representation to full project support — we manage the entire process from European supplier to your door in Nigeria and West Africa.</p>
+          <p>From equipment sourcing and technical representation to full project support — we manage the entire process from European suppliers to your destination.</p>
         </div>
       </div>
 

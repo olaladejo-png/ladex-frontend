@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 const WHY_US_FALLBACK = [
-  { icon: 'globe', title: 'Germany Based', desc: 'Direct access to European manufacturers and distribution networks' },
-  { icon: 'graduation-cap', title: 'Technically Qualified', desc: 'MSc in Electrical Engineering' },
-  { icon: 'map-pin', title: 'Nigeria Presence', desc: 'Operations in Ibadan and Lagos' },
-  { icon: 'handshake', title: 'Customer Focus', desc: 'End-to-end support from enquiry to delivery' },
-  { icon: 'package', title: 'Complete Service', desc: 'Sourcing, logistics, and after-sales support' },
+  { icon: 'globe', title: 'Germany Based Access', desc: 'Direct sourcing from European manufacturers and authorized distributors.' },
+  { icon: 'graduation-cap', title: 'Engineering Expertise', desc: 'Led by a qualified electrical engineer with international experience.' },
+  { icon: 'map-pin', title: 'Local Presence in Nigeria', desc: 'Strong on-ground support in Lagos and Ibadan.' },
+  { icon: 'handshake', title: 'Customer Focus', desc: 'End-to-end support from enquiry to delivery.' },
+  { icon: 'package', title: 'Complete Service', desc: 'From sourcing, logistics, and after-sales support.' },
 ];
 
 const SECTORS = [
@@ -60,8 +60,8 @@ export default async function HomePage() {
   const intro1 = settings?.homepage_intro_1 || 'We supply high-quality European equipment and technical solutions for infrastructure and industrial projects worldwide, with a strong focus on Nigeria and West Africa.';
   const intro2 = settings?.homepage_intro_2 || 'From sourcing to delivery, we provide reliable procurement, logistics coordination, and technical support for engineering-driven industries.';
   const whoWeAreHeading = settings?.whoweare_heading || 'Germany-Based. Global Procurement.';
-  const whoWeAreBody1 = settings?.whoweare_body_1 || 'Ladex Group is a Germany-based procurement and supply company specializing in sourcing high-quality electrical, automation, and industrial equipment from leading European manufacturers. With operations in Germany and Nigeria, we combine direct access to Europe\u2019s manufacturing eco-system with on-ground technical support and delivery coordination across Africa and other international markets.';
-  const whoWeAreBody2 = settings?.whoweare_body_2 || 'From our base in Bavaria, Germany, the heart of Europe\u2019s industrial network, we provide reliable sourcing, efficient logistics, and trusted supply solutions to our clients globally.';
+  const whoWeAreBody1 = settings?.whoweare_body_1 || 'Ladex Group is a Germany-based procurement and supply company specializing in sourcing high-quality electrical, automation, and industrial equipment from leading European manufacturers.';
+  const whoWeAreBody2 = settings?.whoweare_body_2 || 'With operations in Germany and Nigeria, we combine direct access to Europe\u2019s manufacturing eco-system with on-ground technical support and delivery coordination across Africa and other international markets.';
   const ctaEyebrow = settings?.homepage_cta_eyebrow || 'Get Started';
   const ctaHeading = settings?.homepage_cta_heading || 'Ready to Source European Equipment?';
   const ctaBody = settings?.homepage_cta_body || 'Tell us your requirements, specification and timeline. We handle the rest \u2014 from supplier identification to delivery.';
@@ -285,6 +285,7 @@ export default async function HomePage() {
             <h2>{whoWeAreHeading}</h2>
             <p>{whoWeAreBody1}</p>
             <p>{whoWeAreBody2}</p>
+            <p>From our base in Bavaria, Germany, the heart of Europe&apos;s industrial network, we provide reliable sourcing, efficient logistics, and trusted supply solutions to our clients globally.</p>
             <div style={{ marginTop: '2rem' }}>
               <Link href="/about" className="btn btn-dark">Learn More About Us →</Link>
             </div>
@@ -300,12 +301,10 @@ export default async function HomePage() {
           <div className="mv-grid">
             <div className="mv-card mv-card-mission">
               <div className="mv-eyebrow">Our Mission</div>
-              <h3>Bridging European Excellence &amp; African Opportunity</h3>
               <p>{dynamicMission}</p>
             </div>
             <div className="mv-card mv-card-vision">
               <div className="mv-eyebrow" style={{ color: 'var(--ladex-gold)' }}>Our Vision</div>
-              <h3>West Africa&apos;s Trusted Gateway</h3>
               <p>{dynamicVision}</p>
             </div>
           </div>
@@ -341,7 +340,7 @@ export default async function HomePage() {
         <div className="container">
           <p className="section-eyebrow">Why Choose Us</p>
           <h2 className="section-title">The Ladex Advantage</h2>
-          <p className="section-lead">Five reasons why leading organisations across Nigeria and West Africa trust Ladex Group.</p>
+          <p className="section-lead">Five reasons why leading organisations choose Ladex Group.</p>
           <div className="why-grid">
             {whyUs.map((w) => (
               <div key={w.title} className="why-card">
@@ -374,7 +373,7 @@ export default async function HomePage() {
 
 
       {/* Brands */}
-      <div className="brands-section">
+      <div id="brands" className="brands-section">
         <div className="brands-header">
           <p>Trusted Manufacturers</p>
           <h2>Brands We Source</h2>

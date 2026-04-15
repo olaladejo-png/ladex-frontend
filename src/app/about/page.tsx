@@ -152,17 +152,15 @@ export default async function AboutPage() {
         <div className="container">
           <p className="section-eyebrow">Our Identity</p>
           <h2 className="section-title">Rooted in Engineering. Built for Trade.</h2>
-          <p className="section-lead">Ladex Group is a Germany-based procurement and export company supplying high-quality equipment and solutions from leading European manufacturers to Nigeria and West Africa. With operations in Germany and Nigeria, we combine direct access to European supply chains with on-ground technical support and delivery coordination in Africa.</p>
+          <p className="section-lead">Ladex Group is a Germany-based procurement and export company supplying high-quality equipment and solutions from leading European manufacturers to Africa and other international markets. With operations in Germany and Nigeria, we combine direct access to European supply chains with on-ground technical support and delivery coordination globally.</p>
 
           <div className="mv-grid">
             <div className="mv-card mv-card-dark">
               <div className="mv-eyebrow">Our Mission</div>
-              <h3>Bridging European Excellence &amp; African Opportunity</h3>
               <p>{dynamicMission}</p>
             </div>
             <div className="mv-card mv-card-light">
               <div className="mv-eyebrow">Our Vision</div>
-              <h3>West Africa&apos;s Trusted Gateway</h3>
               <p>{dynamicVision}</p>
             </div>
           </div>
@@ -193,7 +191,6 @@ export default async function AboutPage() {
         <div className="container">
           <p className="section-eyebrow">Leadership</p>
           <h2 className="section-title">Management Team</h2>
-          <p className="section-lead">Experienced professionals combining deep African market knowledge with direct European procurement capability.</p>
           <div className="team-grid">
             {displayTeam.map((member) => (
               <div key={member.name} className="team-card">

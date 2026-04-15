@@ -19,7 +19,7 @@ export default function HeroCarousel({ slides, tagline }: { slides: Carousel[]; 
     {
       id: 1, documentId: 'fallback-1',
       title: 'European Excellence.\\nAfrican Opportunity.',
-      subtitle: 'Complete supply chain mastery — from advanced German engineering to precision delivery across Nigeria.',
+      subtitle: 'Complete supply chain mastery — from advanced German engineering to precision delivery worldwide.',
       link_url: '/about', link_text: 'Discover Our Edge',
       order: 1, is_active: true, image: { id: 0, documentId: '', url: '' },
     },
