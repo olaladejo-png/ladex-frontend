@@ -100,7 +100,7 @@ export default async function ServicesPage() {
 
         .services-list { padding: 5rem 0; display: flex; flex-direction: column; gap: 3rem; }
 
-        .service-item { display: grid; grid-template-columns: minmax(300px, 1fr) 1.5fr; gap: 4rem; padding: 4rem 0; border-bottom: 1px solid var(--border); align-items: center; }
+        .service-item { display: grid; grid-template-columns: minmax(300px, 1fr) 1.5fr; gap: 4rem; padding: 4rem 0; border-bottom: 1px solid var(--border); align-items: start; }
         .service-item:last-child { border-bottom: none; }
 
         .service-item-left { position: relative; width: 100%; aspect-ratio: 4/5; overflow: hidden; border-radius: var(--radius-sm); }
