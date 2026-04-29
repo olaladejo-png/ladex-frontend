@@ -8,10 +8,10 @@ import { getGlobalSettings } from "@/lib/api";
 export const metadata: Metadata = {
   title: {
     template: "%s | Ladex Group",
-    default: "Ladex Group – Quality Without Compromise. Europe to Africa.",
+    default: "Ladex Group – Quality Without Compromise. Europe to the World.",
   },
   description:
-    "Germany-based procurement and export company supplying high-quality European equipment and industrial solutions to Nigeria and West Africa.",
+    "We supply high-quality European equipment and technical solutions for infrastructure and industrial projects worldwide, with a strong focus on Nigeria and West Africa.",
   keywords: [
     "European equipment supply Nigeria",
     "industrial equipment West Africa",
@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     "PLC automation Nigeria",
     "Ladex Group",
     "equipment sourcing Nigeria",
+    "Europe to the World",
+    "infrastructure equipment West Africa",
+    "technical solutions Nigeria",
   ],
   icons: {
     icon: [
@@ -35,10 +38,24 @@ export const metadata: Metadata = {
     locale: "en_NG",
     siteName: "Ladex Group",
     url: "https://ladexgroup.com",
+    title: "Ladex Group – Quality Without Compromise. Europe to the World.",
+    description:
+      "We supply high-quality European equipment and technical solutions for infrastructure and industrial projects worldwide, with a strong focus on Nigeria and West Africa.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ladex Group – Europe to the World.",
+    description:
+      "We supply high-quality European equipment and technical solutions for infrastructure and industrial projects worldwide, with a strong focus on Nigeria and West Africa.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+    },
   },
 };
 
