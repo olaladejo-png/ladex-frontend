@@ -155,6 +155,15 @@ export default async function ContactPage() {
               <div className="info-section-title">
                 <span>🇳🇬</span> Nigeria Operations
               </div>
+
+              <div style={{ marginBottom: '0.85rem', fontSize: '0.9rem', lineHeight: 1.5 }}>
+                <div style={{ fontWeight: 700, color: 'var(--text-primary)' }} > LADEX Engineering &amp; Construction Company Limited </div>
+                <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }} > RC 9230512 </div>
+              </div>
+
+
+
+              
               <div className="contact-card">
                 <div className="contact-card-item">
                   <div className="ccard-icon"><Icon name="map-pin" size={18} /></div>
